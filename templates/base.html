@@ -16,7 +16,7 @@
 
     <!-- Fixed navbar -->
     <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light">
-        <a class="navbar-brand" href="#">Help Others</a>
+        <a class="navbar-brand" href="{% url 'index' %}">Help Others</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -24,7 +24,10 @@
             <ul class="navbar-nav">
                 <li class="nav-item active">
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
-                </li>                    
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'projects' %}">Projects</a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Categories
@@ -40,7 +43,11 @@
             {% if user.is_authenticated %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}">Log Out</a></li>
-                <li class="nav-item"><a class="nav-link" href="#"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a></li>
+                <li class="nav-item"><a class="nav-link" href="{% url 'view_cart' %}"><i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                    {% if project_count > 0 %}
+                        <label class="badge badge-warning">{{ project_count }}</label>
+                    {% endif %}</a>
+                </li>
             {%  else %}
                 <li class="nav-item"><a class="nav-link" href="{% url 'register' %}">Register</a></li>
                 <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Log In</a></li>

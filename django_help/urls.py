@@ -17,9 +17,18 @@ from django.conf.urls import url, include
 from home import urls as urls_home
 from django.contrib import admin
 from accounts import urls as urls_accounts
+from projects import urls as urls_projects
+from cart import urls as urls_cart
+from projects.views import all_projects
+from django.views import static
+from .settings import MEDIA_ROOT
 
 urlpatterns = [
     url(r'^', include(urls_home)),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(urls_accounts)),
+    url(r'^projects', all_projects, name='projects'),
+    url(r'^projects/', include(urls_projects)),
+    url(r'^cart/', include(urls_cart)),
+    url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
