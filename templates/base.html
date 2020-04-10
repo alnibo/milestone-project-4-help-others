@@ -37,7 +37,7 @@
                     <a class="dropdown-item" href="#">Housing</a>
                     <a class="dropdown-item" href="#">Health</a>
                     </div>
-                </li>    
+                </li>
             </ul>
             <ul class="navbar-nav ml-auto">
             {% if user.is_authenticated %}
@@ -68,6 +68,12 @@
     {% endif %}
 
     <main class="container">
+        <div class="display">
+            <form action="{% url 'search' %}" method="get">
+                <input type="text" name="q">
+                <button type="search">Search</button>
+            </form>
+        </div>
         {% block content %}
         {% endblock %}
     </main>
