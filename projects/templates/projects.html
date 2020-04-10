@@ -2,12 +2,25 @@
 
 {% block content %}
 
-<div class="row row-flex">
+<div class="row">
+    <h2 class="top-header">All Projects</h2>
+</div>
+
+<div class="row">
+    <div class="display">
+        <form action="{% url 'search' %}" method="get">
+            <input type="text" name="q">
+            <button type="search"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+        </form>
+    </div>
+</div>
+
+<div class="row">
 	{% for project in projects %}
 	<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 display panel panel-default">
 		<div class="panel-body">
 			<div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
-
+            <hr>
 			<h3>{{ project.name }}</h3>
 			<h5>{{ project.category }}</h5>
 			<p class="project-description">{{ project.description }}</p>
@@ -16,9 +29,10 @@
 			<form method="post" action="{% url 'add_to_cart' project.id %}">
 				{% csrf_token %}
 				<div class="input-group">
-					<input name="quantity" type="number" min="1" max="999" class="form-control" placeholder="Quantity">
-					<span class="input-group-btn">
-                        <button class="btn btn-success" type="submit">Add</button>
+					<label for="exampleInputAmount" class="sr-only">Add Quantity</label>
+                    <input name="quantity" type="number" min="1" max="999" class="form-control" value="1">
+					<span class="input-group-append">
+                        <button class="btn btn-secondary" type="submit">Add</button>
                     </span>
 				</div>
 			</form>
@@ -26,4 +40,5 @@
 	</div>
 	{% endfor %}
 </div>
+
 {% endblock %}
