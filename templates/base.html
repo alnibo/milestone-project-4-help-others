@@ -71,7 +71,7 @@
         <div class="display">
             <form action="{% url 'search' %}" method="get">
                 <input type="text" name="q">
-                <button type="search">Search</button>
+                <button type="search"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
             </form>
         </div>
         {% block content %}
@@ -80,7 +80,7 @@
 
     <footer>
         <div class="container">
-            <span><a class="grey-text text-lighten-4" href="https://github.com/alnibo/milestone-project-4-help-others" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a></span>
+            <a class="github-link" href="https://github.com/alnibo/milestone-project-4-help-others" target="_blank"><i class="fa fa-github-square" aria-hidden="true"></i></a>
             <span class="d-none d-sm-inline">This website was created for educational purposes only.</span>
         </div>
     </footer>
