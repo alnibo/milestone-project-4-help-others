@@ -7,26 +7,32 @@ def view_cart(request):
 
 
 def add_to_cart(request, id):
-    """Add a quantity of the specified project to the cart"""
-    quantity = int(request.POST.get('quantity'))
+    """
+    Add an donation amount in Euro of the
+    specified project to the cart
+    """
+    amount = int(request.POST.get('amount'))
 
     cart = request.session.get('cart', {})
-    cart[id] = cart.get(id, quantity)
+    if id in cart:
+        cart[id] = int(cart[id]) + amount
+    else:
+        cart[id] = cart.get(id, amount)
 
     request.session['cart'] = cart
-    return redirect(reverse('index'))
+    return redirect(reverse('view_cart'))
 
 
 def adjust_cart(request, id):
     """
-    Adjust the quantity of the specified
-    project to the specified amount
+    Adjust the donation amount in Euro
+    of the specified project
     """
-    quantity = int(request.POST.get('quantity'))
+    amount = int(request.POST.get('amount'))
     cart = request.session.get('cart', {})
 
-    if quantity > 0:
-        cart[id] = quantity
+    if amount > 0:
+        cart[id] = amount
     else:
         cart.pop(id)
 

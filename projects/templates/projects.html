@@ -10,7 +10,7 @@
     <div class="display">
         <form action="{% url 'search' %}" method="get">
             <input type="text" name="q">
-            <button type="search"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+            <button type="search"><i class="fa fa-search btn-icon" aria-hidden="true"></i>Search</button>
         </form>
     </div>
 </div>
@@ -24,16 +24,18 @@
 			<h3>{{ project.name }}</h3>
 			<h5>{{ project.category }}</h5>
 			<p class="project-description">{{ project.description }}</p>
-			<p>{{ project.price }}<i class="fa fa-eur" aria-hidden="true"></i></p>
 
 			<form method="post" action="{% url 'add_to_cart' project.id %}">
 				{% csrf_token %}
 				<div class="input-group">
-					<label for="exampleInputAmount" class="sr-only">Add Quantity</label>
-                    <input name="quantity" type="number" min="1" max="999" class="form-control" value="1">
-					<span class="input-group-append">
-                        <button class="btn btn-secondary" type="submit">Add</button>
-                    </span>
+					<label for="exampleInputAmount" class="sr-only">Add Amount in Euro</label>
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">€</span>
+                    </div>
+                    <input name="amount" type="number" min="5" max="99999" class="form-control" placeholder="Enter Amount">
+					<div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Add</button>
+                    </div>
 				</div>
 			</form>
 		</div>

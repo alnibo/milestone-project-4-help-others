@@ -5,7 +5,7 @@ from projects.models import Project
 def cart_contents(request):
     """
     Ensures that the cart contents are available
-    when rendering every page
+    on any web page within the web app
     """
     cart = request.session.get('cart', {})
 
@@ -13,11 +13,11 @@ def cart_contents(request):
     total = 0
     project_count = 0
 
-    for id, quantity in cart.items():
+    for id, amount in cart.items():
         project = get_object_or_404(Project, pk=id)
-        total += quantity * project.price
-        project_count += quantity
-        cart_items.append({'id': id, 'quantity': quantity,
+        total += amount
+        project_count += 1
+        cart_items.append({'id': id, 'amount': amount,
                            'project': project})
 
     return {'cart_items': cart_items, 'total': total,
