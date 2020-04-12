@@ -41,6 +41,7 @@
     <div class="cart-text">
         <p>Your cart is currently empty. Look through our projects to find something that you would like to donate money to.</p>
         <a href="{% url 'projects' %}" class="btn btn-secondary" role="button"><i class="fa fa-globe btn-icon" aria-hidden="true"></i>All Projects</a>
+        <a href="{% url 'index' %}" class="btn btn-secondary home-btn" role="button"><i class="fa fa-home btn-icon" aria-hidden="true"></i>Back to Homepage</a>
     </div>
     {% endif %}
 </div>
@@ -48,7 +49,7 @@
     <div>
         <h5>Total</h5>
         <p><strong>{{ total }}<i class="fa fa-eur" aria-hidden="true"></i></strong></p>
-        <a href="/" class="btn btn-success" role="button"><i class="fa fa-check-circle btn-icon" aria-hidden="true"></i>Checkout</a>
+        <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><i class="fa fa-check-circle btn-icon" aria-hidden="true"></i>Checkout</a>
     </div>
 </div>
 
