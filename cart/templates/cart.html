@@ -2,6 +2,8 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 
+{% block head_title %}Cart{% endblock %}
+
 {% block content %}
 <section class="container section-container">
     <div class="row">
@@ -15,7 +17,7 @@
                 <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ item.project.image }}')"></div>
                 <hr>
                 <h3>{{ item.project.name }}</h3>
-                <h5>{{ item.project.category }}</h5>
+                <h5><strong>{{ item.project.category }}</strong></h5>
                 <p class="project-description">{{ item.project.description }}</p>
                 <div class="row">
                     <form class="form-inline cart-form" method="POST" action="{% url 'adjust_cart' item.id %}">
@@ -50,7 +52,9 @@
         <div>
             <h5>Total</h5>
             <p><strong>{{ total }}<i class="fa fa-eur" aria-hidden="true"></i></strong></p>
+            {% if project_count > 0 %}
             <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><i class="fa fa-check-circle btn-icon" aria-hidden="true"></i>Checkout</a>
+            {% endif %}
         </div>
     </div>
 </section>

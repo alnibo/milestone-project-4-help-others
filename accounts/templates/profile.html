@@ -1,9 +1,28 @@
 {% extends 'base.html' %}
 
-{% block page_title %}{{ user }}'s Profile{% endblock %}
-
-{% block page_heading %}{{ user }}'s Profile{% endblock %}
+{% block head_title %}{{ user|title }}'s Profile{% endblock %}
 
 {% block content %}
-<p>{{ profile.email }}</p>
+
+<section class="container section-container">
+
+    <div class="card profile-card">
+        <img class="card-img-top" src="/media/images/smiley.png" alt="Smiley">
+        <div class="card-body">
+            <hr>
+            <h3 class="card-title">{{ user|title }}'s Profile</h3>
+            <p><strong>Username:</strong> {{ profile.username }}</p>
+            <p class="card-text"><strong>Email:</strong> {{ profile.email }}</p>
+            <a href="#" class="btn btn-danger profile-btn"><i class="fa fa-key btn-icon" aria-hidden="true"></i>Change password</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col text-center">
+            <a href="{% url 'index' %}" class="btn btn-secondary" role="button"><i class="fa fa-home btn-icon" aria-hidden="true"></i>Back to Homepage</a>
+        </div>
+    </div>
+</section>
+
+
 {% endblock %}

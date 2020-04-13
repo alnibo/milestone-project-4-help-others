@@ -2,6 +2,8 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 
+{% block head_title %}Checkout{% endblock %}
+
 {% block head_js %}
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
@@ -21,7 +23,7 @@
                 <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ item.project.image }}')"></div>
                 <hr>
                 <h3>{{ item.project.name }}</h3>
-                <h5>{{ item.project.category }}</h5>
+                <h5><strong>{{ item.project.category }}</strong></h5>
                 <p class="project-description">{{ item.project.description }}</p>
                 <p>{{ item.amount }}<i class="fa fa-eur" aria-hidden="true"></i></p>
             </div>

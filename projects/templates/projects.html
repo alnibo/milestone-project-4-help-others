@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block head_title %}Projects{% endblock %}
+
 {% block content %}
 <section class="container section-container">
     <div class="row">
@@ -22,22 +24,26 @@
                 <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
                 <hr>
                 <h3>{{ project.name }}</h3>
-                <h5>{{ project.category }}</h5>
+                <h5><strong>{{ project.category }}</strong></h5>
                 <p class="project-description">{{ project.description }}</p>
 
-                <form method="post" action="{% url 'add_to_cart' project.id %}">
-                    {% csrf_token %}
-                    <div class="input-group">
-                        <label for="exampleInputAmount" class="sr-only">Add Amount in Euro</label>
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">€</span>
+                {% if user.is_authenticated %}
+                    <form method="post" action="{% url 'add_to_cart' project.id %}">
+                        {% csrf_token %}
+                        <div class="input-group">
+                            <label for="exampleInputAmount" class="sr-only">Add Amount in Euro</label>
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">€</span>
+                            </div>
+                            <input name="amount" type="number" min="5" max="99999" class="form-control" placeholder="Enter Amount">
+                            <div class="input-group-append">
+                                <button class="btn btn-secondary" type="submit"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Add</button>
+                            </div>
                         </div>
-                        <input name="amount" type="number" min="5" max="99999" class="form-control" placeholder="Enter Amount">
-                        <div class="input-group-append">
-                            <button class="btn btn-secondary" type="submit"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Add</button>
-                        </div>
-                    </div>
-                </form>
+                    </form>
+                {%  else %}
+                    <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to donate.</p>
+                {% endif %}
             </div>
         </div>
         {% endfor %}
