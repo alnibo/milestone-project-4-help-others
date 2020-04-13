@@ -2,7 +2,11 @@
 
 body {
     font-family: Arial;
-    padding-top: 100px;
+    padding-top: 56px;
+}
+
+.navbar {
+    background-color: rgba(221,221,221,1);
 }
 
 .badge {
@@ -19,20 +23,30 @@ body {
 }
 
 footer {
-    margin-top: 40px;
     padding-top: 20px;
     padding-bottom: 20px;
-    border-top: 1px solid #ededed;
-    color: #A9A9A9;
+    border-top: 1px solid rgba(168, 168, 168, 1);
+    background-color: rgba(221,221,221,1);
+    color: rgba(117, 117, 117, 1);
     text-align: center;
 }
 
+.footer-text {
+    padding-left: 10px;
+}
+
 .github-link {
-    color: #A9A9A9;
+    color: rgba(117, 117, 117, 1);
 }
 
 .github-link:hover {
     color: black;
+}
+
+.main-container {
+    background-image: url("/media/images/background.png");
+    min-height: 90vh;
+    background-attachment: fixed;
 }
 
 /* ********************  ******************** */
@@ -45,10 +59,83 @@ footer {
     padding-top: 20px;
 }*/
 
+/* ******************** Homepage ******************** */
+
+.top-pic-home {
+    height: 50vh;
+    background-image: url("/media/images/group-of-kids.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.welcome-heading {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.sub-heading-home {
+    padding-top: 20px;
+}
+
+.search-home {
+    margin: 0 10px;
+    padding-bottom: 30px;
+}
+
+.input-home {
+    height: 38px;
+}
+
+.search-btn-home {
+    margin-top: 10px;
+}
+
+.stats-container {
+    background-color: white;
+}
+
+.stat-box {
+    padding-top: 40px;
+}
+
+.home-icon {
+    padding-left: 20px;
+}
+
+.stat-divider {
+    margin-top: 45px;
+    margin-bottom: 0px;
+    width: 70%;
+}
+
 /* ******************** Project Page ******************** */
+
+.section-container {
+    padding-top:30px;
+    padding-bottom: 40px;
+}
 
 .top-header {
     padding-left: 10px;
+}
+
+input {
+    border-radius: 3px;
+    border: 1px solid #ddd;
+}
+
+.search-bar {
+    padding-left: 10px;
+}
+
+.search-btn {
+    border-radius: 3px;
+}
+
+.input-group-text {
+    border-top-left-radius: 3px!important;
+    border-bottom-left-radius: 3px!important;
 }
 
 .project {
@@ -68,12 +155,18 @@ footer {
 
 .panel-body {
     height: 100%;
-    border: 1px solid #ddd;
+    border: 1px solid rgba(168, 168, 168, 1);
+    border-radius: 3px;
     padding: 10px;
+    background-color: rgba(221,221,221,0.4);
 }
 
 .project-description {
     min-height: 40px;
+}
+
+.btn-icon {
+    padding-right: 3px;
 }
 
 /* ******************** Cart Page ******************** */
@@ -82,22 +175,45 @@ footer {
     padding-left: 10px;
 }
 
-.cart-icon {
-    padding-right: 2px;
-}
-
 .cart-btn {
     margin-left: 5px;
+}
+
+.home-btn {
+    margin-left: 20px;
 }
 
 .fa-eur {
     padding-left: 2px;
 }
 
+.cart-text {
+    padding: 30px 0;
+}
+
 .checkout-box {
-    border-top: 1px solid gray;
-    background-color: lightgray;
+    border: 1px solid rgba(168, 168, 168, 1);
+    border-radius: 3px;
+    background-color: rgba(168, 168, 168, 0.5);
     width: 300px;
     margin: 20px -5px;
     padding: 10px;
+}
+
+/* ******************** Checkout Page ******************** */
+
+.checkout-form {
+    border: 1px solid rgba(168, 168, 168, 1);
+    padding: 10px 0;
+}
+
+.checkout-form legend {
+    padding-left: 10px;
+}
+
+@media (min-width:768px) {
+    .search-btn-home {
+        margin-top: 0;
+        margin-left: 10px;
+    }
 }

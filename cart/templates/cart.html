@@ -3,55 +3,56 @@
 {% load bootstrap_tags %}
 
 {% block content %}
-<div class="row">
-    <h2 class="top-header">Your Cart</h2>
-</div>
-<div class="row">
-    {% if project_count > 0 %}
-    {% for item in cart_items %}
-    <div class="col-xs-10 col-xs-offset-0 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 display panel panel-default">
-        <div class="panel-body">
-            <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ item.project.image }}')"></div>
-            <hr>
-            <h3>{{ item.project.name }}</h3>
-            <h5>{{ item.project.category }}</h5>
-            <p class="project-description">{{ item.project.description }}</p>
-            <div class="row">
-                <form class="form-inline cart-form" method="POST" action="{% url 'adjust_cart' item.id %}">
-                    {% csrf_token %}
-                    <div>
-                        <label for="exampleInputAmount" class="sr-only">New Amount in Euro</label>
-                        <div class="input-group">
-                            <div class="input-group-prepend">
-                                <span class="input-group-text" id="basic-addon1">€</span>
-                            </div>
-                            <input name="amount" type="number" min="0" max="99999" class="form-control" value="{{ item.amount }}">
-                            <div class="input-group-append">
-                                <button type="submit" class="btn btn-secondary"><i class="fa fa-pencil-square-o btn-icon" aria-hidden="true"></i>Amend</button>
+<section class="container section-container">
+    <div class="row">
+        <h2 class="top-header">Your Cart</h2>
+    </div>
+    <div class="row">
+        {% if project_count > 0 %}
+        {% for item in cart_items %}
+        <div class="col-xs-10 col-xs-offset-0 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 display panel panel-default">
+            <div class="panel-body">
+                <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ item.project.image }}')"></div>
+                <hr>
+                <h3>{{ item.project.name }}</h3>
+                <h5>{{ item.project.category }}</h5>
+                <p class="project-description">{{ item.project.description }}</p>
+                <div class="row">
+                    <form class="form-inline cart-form" method="POST" action="{% url 'adjust_cart' item.id %}">
+                        {% csrf_token %}
+                        <div>
+                            <label for="exampleInputAmount" class="sr-only">New Amount in Euro</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">€</span>
+                                </div>
+                                <input name="amount" type="number" min="0" max="99999" class="form-control" value="{{ item.amount }}">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-secondary"><i class="fa fa-pencil-square-o btn-icon" aria-hidden="true"></i>Amend</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
-                <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger cart-btn float-right"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                    </form>
+                    <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger cart-btn float-right"><i class="fa fa-trash" aria-hidden="true"></i></a>
+                </div>
             </div>
         </div>
+        {% endfor %}
+        {% else %}
+        <div class="cart-text">
+            <p>Your cart is currently empty. Look through our projects to find something that you would like to donate money to.</p>
+            <a href="{% url 'projects' %}" class="btn btn-secondary" role="button"><i class="fa fa-globe btn-icon" aria-hidden="true"></i>All Projects</a>
+            <a href="{% url 'index' %}" class="btn btn-secondary home-btn" role="button"><i class="fa fa-home btn-icon" aria-hidden="true"></i>Back to Homepage</a>
+        </div>
+        {% endif %}
     </div>
-    {% endfor %}
-    {% else %}
-    <div class="cart-text">
-        <p>Your cart is currently empty. Look through our projects to find something that you would like to donate money to.</p>
-        <a href="{% url 'projects' %}" class="btn btn-secondary" role="button"><i class="fa fa-globe btn-icon" aria-hidden="true"></i>All Projects</a>
-        <a href="{% url 'index' %}" class="btn btn-secondary home-btn" role="button"><i class="fa fa-home btn-icon" aria-hidden="true"></i>Back to Homepage</a>
+    <div class="row checkout-box">
+        <div>
+            <h5>Total</h5>
+            <p><strong>{{ total }}<i class="fa fa-eur" aria-hidden="true"></i></strong></p>
+            <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><i class="fa fa-check-circle btn-icon" aria-hidden="true"></i>Checkout</a>
+        </div>
     </div>
-    {% endif %}
-</div>
-<div class="row checkout-box">
-    <div>
-        <h5>Total</h5>
-        <p><strong>{{ total }}<i class="fa fa-eur" aria-hidden="true"></i></strong></p>
-        <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><i class="fa fa-check-circle btn-icon" aria-hidden="true"></i>Checkout</a>
-    </div>
-</div>
-
+</section>
 
 {% endblock %}
