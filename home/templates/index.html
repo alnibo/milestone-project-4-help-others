@@ -2,8 +2,48 @@
 
 {% block page_title %}Home Page{% endblock %}
 
-{% block page_heading %}Home{% endblock %}
-
 {% block content %}
-    <div>This is a test text.</div>
+
+<header class="container-fluid">
+    <div class="row top-pic-home" title="Help Others"></div>
+</header>
+
+<div class="col-12 welcome-heading">
+    <h1>Welcome to Help Others</h1>
+    <h3 class="sub-heading-home">Here you can donate to projects worldwide and thereby help other people in need.</h3>
+</div>
+
+<section class="container section-container">
+    <div class="row">
+        <div class="col-sm-12 col-md-8 offset-md-2">
+            <form class="row search-home" action="{% url 'search' %}" method="get">
+                <input class="col-12 col-md-8 input-home" type="text" name="q">
+                <button type="search" class="btn btn-warning search-btn-home col-12 col-md-3"><i class="fa fa-search btn-icon" aria-hidden="true"></i>Search</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid section-container stats-container">
+    <div class="row text-center">
+        <div class="col-12 col-md stat-box">
+            <h1>90<i class="fa fa-money home-icon" aria-hidden="true"></i></h1>
+            <p>Cent of every euro donated goes directly to project support and grants at home and abroad</p>
+            <hr class="stat-divider d-md-none">
+        </div>
+        <div class="col-12 col-md stat-box">
+            <h1>&gt;10<i class="fa fa-thumbs-o-up home-icon" aria-hidden="true"></i></h1>
+            <p>projects worldwide to help people in need and give them a future</p>
+            <hr class="stat-divider d-md-none">
+        </div>
+        <div class="col-12 col-md stat-box">
+            <h1>200<i class="fa fa-smile-o home-icon" aria-hidden="true"></i></h1>
+            <p>Thousand people are supported with your donation</p>
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid section-container">
+</section>
+
 {% endblock %}
