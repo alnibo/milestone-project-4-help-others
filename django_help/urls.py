@@ -21,7 +21,6 @@ from projects import urls as urls_projects
 from cart import urls as urls_cart
 from search import urls as urls_search
 from checkout import urls as urls_checkout
-from projects.views import all_projects
 from django.views import static
 from .settings import MEDIA_ROOT
 
@@ -29,8 +28,7 @@ urlpatterns = [
     url(r'^', include(urls_home)),
     url(r'^admin/', admin.site.urls),
     url(r'^accounts/', include(urls_accounts)),
-    url(r'^projects', all_projects, name='projects'),
-    url(r'^projects/', include(urls_projects)),
+    url(r'^projects', include(urls_projects)),
     url(r'^cart/', include(urls_cart)),
     url(r'^checkout/', include(urls_checkout)),
     url(r'^search/', include(urls_search)),

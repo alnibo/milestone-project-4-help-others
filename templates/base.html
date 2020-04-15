@@ -36,9 +36,9 @@
                         Categories
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{% url 'education' %}">Education</a>
-                    <a class="dropdown-item" href="#">Housing</a>
-                    <a class="dropdown-item" href="#">Health</a>
+                    <a class="dropdown-item" href="{% url 'category' category='Education' %}">Education</a>
+                    <a class="dropdown-item" href="{% url 'category' category='Housing' %}">Housing</a>
+                    <a class="dropdown-item" href="{% url 'category' category='Health' %}">Health</a>
                     </div>
                 </li>
             </ul>
