@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load bootstrap_tags %}
+
+{% block head_title %}Add Project{% endblock %}
+{% block content %}
+
+<section class="container section-container">
+
+	<div class="login-card">
+		<h2 class="form-text">Add Project</h2>
+		<div class="card-body">
+			<form method="POST">
+				{% csrf_token %}
+				{{ add_project_form | as_bootstrap }}
+				<div class="col-12 text-center">
+					<button type="submit" class="btn btn-secondary"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Add Project</button>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</section>
+
+{% endblock %}a

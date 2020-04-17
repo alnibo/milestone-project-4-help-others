@@ -22,6 +22,10 @@ body {
     background-color: #c67605;
 }
 
+.alert {
+    margin: 0;
+}
+
 footer {
     padding-top: 20px;
     padding-bottom: 20px;
@@ -63,7 +67,7 @@ footer {
 
 .top-pic-home {
     height: 50vh;
-    background-image: url("/media/images/group-of-kids.jpg");
+    background-image: url("/media/images/group-of-kids-big.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

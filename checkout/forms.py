@@ -13,6 +13,7 @@ class MakePaymentForm(forms.Form):
                           required=False)
     expiry_month = forms.ChoiceField(label='Month',
                                      choices=MONTH_CHOICES,
+                                     initial=5,
                                      required=False)
     expiry_year = forms.ChoiceField(label='Year',
                                     choices=YEAR_CHOICES,
