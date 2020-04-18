@@ -1,9 +1,15 @@
 from django.db import models
 
 categories = (
+    ('Animals', 'Animals'),
+    ('Arts', 'Arts & Culture'),
+    ('Community', 'Community & Family'),
     ('Education', 'Education'),
+    ('Environment', 'Environment'),
+    ('Disaster', 'Disaster Relief'),
+    ('Health', 'Health & Medical'),
+    ('Human', 'Human Services'),
     ('Housing', 'Housing'),
-    ('Health', 'Health'),
 )
 
 

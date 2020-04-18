@@ -1,5 +1,9 @@
 /* ******************** Base ******************** */
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: Arial;
     padding-top: 56px;
@@ -185,6 +189,16 @@ input {
     padding-right: 3px;
 }
 
+#myBtn {
+    display: none;
+    position: fixed;
+    bottom: 70px;
+    right: 30px;
+    z-index: 99;
+    border-radius: 50%;
+    font-size: 25px;
+}
+
 /* ******************** Add Project Page ******************** */
 
 #id_image {
@@ -277,7 +291,7 @@ input {
 }
 
 .help-block{
-    font-size: 0.8rem;
+    display: none;
 }
 
 .form-text {
