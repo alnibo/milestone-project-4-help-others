@@ -6,7 +6,7 @@ body {
 }
 
 .navbar {
-    background-color: rgba(221,221,221,1);
+    background-color: rgb(201, 201, 201);
 }
 
 .badge {
@@ -30,7 +30,7 @@ footer {
     padding-top: 20px;
     padding-bottom: 20px;
     border-top: 1px solid rgba(168, 168, 168, 1);
-    background-color: rgba(221,221,221,1);
+    background-color:  rgb(201, 201, 201);
     color: rgba(117, 117, 117, 1);
     text-align: center;
 }
@@ -52,16 +52,6 @@ footer {
     min-height: 100vh;
     background-attachment: fixed;
 }
-
-/* ********************  ******************** */
-
-/* .icon-bar {
-    background-color: #fff;
-} 
-
-.accountform {
-    padding-top: 20px;
-}*/
 
 /* ******************** Homepage ******************** */
 
@@ -113,15 +103,36 @@ footer {
     width: 70%;
 }
 
+.end-container {
+    padding-bottom: 110px;
+}
+
 /* ******************** Project Page ******************** */
 
-.section-container {
-    padding-top:30px;
-    padding-bottom: 40px;
+.top-container {
+    position: relative;
+    text-align: center;
+    padding: 0;
+}
+
+.top-pic {
+    margin: 0;
+    height: 30vh;
+    background-image: url("/media/images/group-of-kids-big.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .top-header {
-    padding-left: 10px;
+    background-color:  rgb(201, 201, 201);
+    padding-top: 0.5rem;
+    padding-bottom: 0.2rem;
+}
+
+.section-container {
+    padding-top: 30px;
+    padding-bottom: 40px;
 }
 
 input {
@@ -174,6 +185,13 @@ input {
     padding-right: 3px;
 }
 
+/* ******************** Add Project Page ******************** */
+
+#id_image {
+    background-color: transparent;
+    border: none;
+}
+
 /* ******************** Cart Page ******************** */
 
 .cart-form {
@@ -184,8 +202,9 @@ input {
     margin-left: 5px;
 }
 
-.home-btn {
-    margin-left: 20px;
+.cart-buttons {
+    margin-top: 0.4rem;
+    margin-left: 0.6rem;
 }
 
 .fa-eur {
@@ -193,7 +212,9 @@ input {
 }
 
 .cart-text {
-    padding: 30px 0;
+    margin: auto;
+    padding: 30px 10px;
+    text-align: center;
 }
 
 .checkout-box {
@@ -201,8 +222,7 @@ input {
     border-radius: 3px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     background-color: rgba(168, 168, 168, 0.5);
-    width: 300px;
-    margin: 20px -5px;
+    margin: 40px auto;
     padding: 10px;
 }
 
@@ -212,6 +232,7 @@ input {
     border: 1px solid rgba(168, 168, 168, 1);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 10px 0;
+    margin: 50px auto;
 }
 
 .checkout-form legend {
@@ -247,19 +268,31 @@ input {
 
 /* ******************** Login/Registration Pages ******************** */
 
-.login-card {
+.general-card {
     background-color: rgba(221,221,221,0.4);
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(168, 168, 168, 1);
     border-radius: 3px;
-    width: 30rem;
-    margin: auto;
-    margin-bottom: 40px;
+    margin: 2rem auto;
+}
+
+.help-block{
+    font-size: 0.8rem;
 }
 
 .form-text {
     padding-top: 30px;
     text-align: center;
+}
+
+/* ******************** Reset Password Pages ******************** */
+
+.reset-text{
+    padding-top: 2rem;
+}
+
+.reset-pass-btn {
+    margin-top: 1rem;
 }
 
 /* ******************** Media Queries ******************** */

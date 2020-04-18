@@ -3,11 +3,12 @@
 {% block head_title %}Projects{% endblock %}
 
 {% block content %}
-<section class="container section-container">
-    <div class="row">
-        <h2 class="top-header">All Projects</h2>
-    </div>
+<header class="container-fluid top-container">
+    <div class="row top-pic" title="group of kids"></div>
+    <h2 class="col-12 top-header">Projects</h2>
+</header>
 
+<section class="container section-container">
     <div class="row">
         <div class="display search-bar">
             <form action="{% url 'search' %}" method="get">

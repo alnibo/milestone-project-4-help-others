@@ -15,6 +15,11 @@
 {% endblock %}
 
 {% block content %}
+<header class="container-fluid top-container">
+    <div class="row top-pic" title="group of kids"></div>
+    <h2 class="col-12 top-header">Checkout</h2>
+</header>
+
 <section class="container section-container">
     <div class="row">
         {% for item in cart_items %}
@@ -31,7 +36,7 @@
         {% endfor %}
     </div>
 
-    <div class="row checkout-box">
+    <div class="row checkout-box col-md-8 col-lg-5">
         <div>
             <h5>Total</h5>
             <p><strong>{{ total }}<i class="fa fa-eur" aria-hidden="true"></i></strong></p>

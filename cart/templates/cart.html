@@ -5,10 +5,12 @@
 {% block head_title %}Cart{% endblock %}
 
 {% block content %}
+<header class="container-fluid top-container">
+    <div class="row top-pic" title="group of kids"></div>
+    <h2 class="col-12 top-header">Your Cart</h2>
+</header>
+
 <section class="container section-container">
-    <div class="row">
-        <h2 class="top-header">Your Cart</h2>
-    </div>
     <div class="row">
         {% if project_count > 0 %}
         {% for item in cart_items %}
@@ -43,12 +45,14 @@
         {% else %}
         <div class="cart-text">
             <p>Your cart is currently empty. Look through our projects to find something that you would like to donate money to.</p>
-            <a href="{% url 'projects' %}" class="btn btn-secondary" role="button"><i class="fa fa-globe btn-icon" aria-hidden="true"></i>All Projects</a>
-            <a href="{% url 'index' %}" class="btn btn-secondary home-btn" role="button"><i class="fa fa-home btn-icon" aria-hidden="true"></i>Back to Homepage</a>
+            <div class="col text-center">
+                <a href="{% url 'projects' %}" class="btn btn-secondary cart-buttons" role="button"><i class="fa fa-globe btn-icon" aria-hidden="true"></i>All Projects</a>
+                <a href="{% url 'index' %}" class="btn btn-secondary cart-buttons" role="button"><i class="fa fa-home btn-icon" aria-hidden="true"></i>Back to Homepage</a>
+            </div>
         </div>
         {% endif %}
     </div>
-    <div class="row checkout-box">
+    <div class="row checkout-box col-md-8 col-lg-5">
         <div>
             <h5>Total</h5>
             <p><strong>{{ total }}<i class="fa fa-eur" aria-hidden="true"></i></strong></p>

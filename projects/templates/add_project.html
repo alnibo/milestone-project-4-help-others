@@ -4,13 +4,16 @@
 
 {% block head_title %}Add Project{% endblock %}
 {% block content %}
+<header class="container-fluid top-container">
+    <div class="row top-pic" title="group of kids"></div>
+</header>
 
 <section class="container section-container">
 
-	<div class="login-card">
+	<div class="login-card col-md-8 col-lg-5">
 		<h2 class="form-text">Add Project</h2>
 		<div class="card-body">
-			<form method="POST">
+			<form method="POST" enctype="multipart/form-data">
 				{% csrf_token %}
 				{{ add_project_form | as_bootstrap }}
 				<div class="col-12 text-center">

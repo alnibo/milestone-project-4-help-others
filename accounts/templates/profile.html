@@ -3,6 +3,10 @@
 {% block head_title %}{{ user|title }}'s Profile{% endblock %}
 
 {% block content %}
+<header class="container-fluid top-container">
+    <div class="row top-pic" title="group of kids"></div>
+    <h2 class="col-12 top-header">{{ user|title }}'s Profile</h2>
+</header>
 
 <section class="container section-container">
 
@@ -13,7 +17,7 @@
             <h3 class="card-title">{{ user|title }}'s Profile</h3>
             <p><strong>Username:</strong> {{ profile.username }}</p>
             <p class="card-text"><strong>Email:</strong> {{ profile.email }}</p>
-            <a href="#" class="btn btn-danger profile-btn"><i class="fa fa-key btn-icon" aria-hidden="true"></i>Change password</a>
+            <a href="{% url 'password_reset' %}" class="btn btn-danger profile-btn"><i class="fa fa-key btn-icon" aria-hidden="true"></i>Change password</a>
         </div>
     </div>
 
