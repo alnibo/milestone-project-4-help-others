@@ -166,10 +166,15 @@ input {
     /* margin: 0 auto; */
 }
 
+.panel-row {
+    padding-top: 20px;
+}
+
 .panel-default {
     border-color: transparent;
     padding: 10px 10px;
     min-width: 260px;
+    margin: 0 auto;
 }
 
 .panel-body {
@@ -240,6 +245,10 @@ input {
     padding: 10px;
 }
 
+.checkout-box-content {
+    width: 100%;
+}
+
 /* ******************** Checkout Page ******************** */
 
 .checkout-form {
@@ -271,13 +280,27 @@ input {
     padding: 20px 0;
 }
 
-.profile-btn {
+.change-btn {
     width: 80%;
     margin: 0 20px;
 }
 
+.divider {
+    background-color: rgba(168, 168, 168, 1);
+    width: 50%;
+}
+
+.profile-header {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
 .profile-buttons {
-    padding: 40px 0;
+    padding-bottom: 30px;
+}
+
+.profile-btn {
+    margin-top: 20px;
 }
 
 /* ******************** Login/Registration Pages ******************** */

@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, reverse
+from django.contrib import auth, messages
 
 
 def view_cart(request):
@@ -20,7 +21,8 @@ def add_to_cart(request, id):
         cart[id] = cart.get(id, amount)
 
     request.session['cart'] = cart
-    return redirect(reverse('view_cart'))
+    messages.success(request, "Project added to Cart!")
+    return redirect(request.META['HTTP_REFERER'])
 
 
 def adjust_cart(request, id):
@@ -37,6 +39,7 @@ def adjust_cart(request, id):
         cart.pop(id)
 
     request.session['cart'] = cart
+    messages.success(request, "Cart Updated!")
     return redirect(reverse('view_cart'))
 
 
@@ -47,4 +50,5 @@ def remove_from_cart(request, id):
     cart = request.session.get('cart', {})
     cart.pop(id)
     request.session['cart'] = cart
-    return redirect('view_cart')
+    messages.success(request, "Cart Updated!")
+    return redirect(reverse('view_cart'))

@@ -18,7 +18,7 @@
 		</div>
 	</div>
 
-	<div class="row">
+	<div class="row panel-row">
 		{% for project in projects %}
 		<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 display panel panel-default">
 			<div class="panel-body">
@@ -38,7 +38,7 @@
 						</div>
 						<input name="amount" type="number" min="5" max="99999" class="form-control" placeholder="Enter Amount">
 						<div class="input-group-append">
-							<button class="btn btn-secondary" type="submit"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Add</button>
+							<button class="btn btn-secondary" type="submit" data-toggle="modal" data-target="#shoppingModal"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Add</button>
 						</div>
 					</div>
 				</form>
@@ -51,5 +51,26 @@
 		{% endfor %}
 	</div>
 </section>
+
+<div class="modal" id="shoppingModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Do you want to continue shopping?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Project added to cart.</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue donating</button>
+                <a href="{% url 'view_cart' %}" class="btn btn-primary">Go to cart</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <button onclick="topFunction()" id="myBtn" class="btn btn-warning" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
 {% endblock %}
