@@ -81,6 +81,13 @@ In the planing process using [Balsamiq](https://balsamiq.cloud/) [these wirefram
 ### Features testing
 ### Responsiveness testing
 ### User stories testing
+
+#### User story 1
+- Each user is able to create their own account by clicking on 'Register' and filling out the register form. In order to register the user needs to input a new username that has not been used yet, an email address and enter a password. The password needs to be repeated in order to confirm. Once registered the user is redirected back to the home page.
+
+#### User story 2
+- 
+
 ## 7. Deployment
 ### GitHub
 ### Heroku

@@ -20,6 +20,7 @@ class Project(models.Model):
     description = models.TextField()
     image = models.ImageField(upload_to='images')
     added_by = models.ForeignKey(User, null=True, default="1", on_delete=models.SET_DEFAULT)
+    
 
     def __str__(self):
         return "{0} {1}".format(

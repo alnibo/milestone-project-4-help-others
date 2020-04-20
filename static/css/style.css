@@ -295,6 +295,10 @@ input {
     padding-bottom: 20px;
 }
 
+.no-projects {
+    margin: 0 auto;
+}
+
 .profile-buttons {
     padding-bottom: 30px;
 }
