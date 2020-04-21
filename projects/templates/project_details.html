@@ -40,8 +40,8 @@
 
                 {% if user.is_authenticated and user == project.added_by %}
                 <div class="text-center">
-                    <a href="{% url 'edit_project' project.pk %}" class="btn btn-light read-btn">Edit</a>
-                    <a href="" class="btn btn-light read-btn">Delete</a>
+                    <a href="{% url 'edit_project' project.pk %}" class="btn btn-light read-btn"><i class="fa fa-pencil-square-o btn-icon" aria-hidden="true"></i>Edit</a>
+                    <button class="btn btn-danger read-btn" data-toggle="modal" data-target="#deleteModal"><i class="fa fa-trash btn-icon" aria-hidden="true"></i>Delete</button>
                 </div>
                 {% endif %}
 			</div>
@@ -49,21 +49,21 @@
 	</div>
 </section>
 
-<div class="modal" id="shoppingModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Do you want to continue shopping?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ project.name|title }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <p>Project added to cart.</p>
+                <p>Are you sure you want to delete this project?</p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Continue donating</button>
-                <a href="{% url 'view_cart' %}" class="btn btn-primary">Go to cart</a>
+                <a href="{% url 'delete_project' project.pk %}" class="btn btn-danger">Yes</a>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
             </div>
         </div>
     </div>

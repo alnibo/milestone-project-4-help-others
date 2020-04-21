@@ -62,4 +62,13 @@ def edit_project(request,pk):
         edit_project_form = AddProjectForm()
         messages.error(request, "Your project couldn't be updated.")
 
-    return render(request, "edit_project.html", {"project": project, "edit_project_form": edit_project_form}) 
+    return render(request, "edit_project.html", {"project": project, "edit_project_form": edit_project_form})
+
+
+# Delete Project
+@login_required
+def delete_project(request,pk):
+    project = get_object_or_404(Project, pk=pk)
+    project.delete()
+    messages.success(request, "You have successfully deleted your project.")
+    return redirect(all_projects)
