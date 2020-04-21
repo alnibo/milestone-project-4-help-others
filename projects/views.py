@@ -24,7 +24,9 @@ def add_project(request):
         add_project_form = AddProjectForm(request.POST, request.FILES)
 
         if add_project_form.is_valid():
-            add_project_form.save()
+            project = add_project_form.save(commit=False)
+            project.added_by = request.user
+            project.save()
             messages.success(request, "You have successfully added a project.")
             return redirect(reverse('profile'))
         else:
