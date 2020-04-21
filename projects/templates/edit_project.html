@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% load bootstrap_tags %}
+
+{% block head_title %}{{ project.name|title }} | Edit {% endblock %}
+{% block content %}
+<header class="container-fluid top-container">
+    <div class="row top-pic" title="group of kids"></div>
+</header>
+
+<section class="container section-container">
+
+	<div class="general-card col-md-8 col-lg-5">
+		<h2 class="form-text">Edit {{ project.name|title }}</h2>
+		<div class="card-body">
+			<form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ edit_project_form | as_bootstrap }}
+				<div class="col-12 text-center">
+					<button type="submit" class="btn btn-secondary"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Confirm Changes</button>
+                    <a href="{% url 'project_details' project.pk %}" class="btn btn-secondary"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Cancel</a>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</section>
+
+{% endblock %}a

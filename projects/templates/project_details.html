@@ -1,35 +1,24 @@
 {% extends 'base.html' %}
 
-{% block head_title %}Projects{% endblock %}
+{% block head_title %}{{ project.name|title }} | Details{% endblock %}
 
 {% block content %}
 <header class="container-fluid top-container">
 	<div class="row top-pic" title="group of kids"></div>
-	<h2 class="col-12 top-header">Projects</h2>
+	<h2 class="col-12 top-header">{{ project.name|title }}</h2>
 </header>
 
 <section class="container section-container">
-	<div class="row">
-		<div class="display search-bar">
-			<form action="{% url 'search' %}" method="get">
-				<input type="text" name="q">
-				<button type="search" class="btn btn-warning"><i class="fa fa-search btn-icon" aria-hidden="true"></i>Search</button>
-			</form>
-		</div>
-	</div>
 
 	<div class="row panel-row">
-		{% for project in projects %}
 		<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 display panel panel-default">
 			<div class="panel-body">
-				<a href="{% url 'project_details' project.pk %}" class="link-to-details">
-                    <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
-                    <hr>
-                    <h3>{{ project.name }}</h3>
-                </a>
-                <h5><strong>{{ project.category }}</strong></h5>
-                <p class="project-description">{{ project.description|truncatewords:11 }}</p>
-                
+				<div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
+				<hr>
+				<h3>{{ project.name }}</h3>
+				<h5><strong>{{ project.category }}</strong></h5>
+				<p class="project-description">{{ project.description }}</p>
+
 				{% if user.is_authenticated %}
 				<form method="post" action="{% url 'add_to_cart' project.id %}">
 					{% csrf_token %}
@@ -45,14 +34,18 @@
 					</div>
 				</form>
 				{%  else %}
-				    <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to donate.</p>
+				<p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to
+					donate.</p>
 				{% endif %}
+
+                {% if user.is_authenticated and user == project.added_by %}
                 <div class="text-center">
-                    <a href="{% url 'project_details' project.pk %}" class="btn btn-light read-btn">Read More</a>
+                    <a href="{% url 'edit_project' project.pk %}" class="btn btn-light read-btn">Edit</a>
+                    <a href="" class="btn btn-light read-btn">Delete</a>
                 </div>
+                {% endif %}
 			</div>
 		</div>
-		{% endfor %}
 	</div>
 </section>
 
