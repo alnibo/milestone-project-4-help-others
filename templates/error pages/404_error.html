@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
+
+{% block head_title %}Page Not Found{% endblock %}
+
+{% block content %}
+<header class="container-fluid top-container">
+    <div class="row top-pic" title="group of kids"></div>
+</header>
+
+<section class="container section-container">
+    <div>
+        <h1>Oops!</h1>
+        <2>404 - Page not found.</2>
+    </div>
+    <div class="row">
+            <div class="col text-center">
+                <a href="{% url 'projects' %}" class="btn btn-secondary cart-buttons" role="button"><i class="fa fa-globe btn-icon" aria-hidden="true"></i>All Projects</a>
+                <a href="{% url 'index' %}" class="btn btn-secondary cart-buttons" role="button"><i class="fa fa-home btn-icon" aria-hidden="true"></i>Back to Homepage</a>
+            </div>
+    </div>
+</section>
+{% endblock %}

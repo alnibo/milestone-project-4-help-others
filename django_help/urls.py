@@ -34,3 +34,6 @@ urlpatterns = [
     url(r'^search/', include(urls_search)),
     url(r'^media/(?P<path>.*)$', static.serve, {'document_root': MEDIA_ROOT}),
 ]
+
+handler404 = 'django_help.views.handler404'
+handler500 = 'django_help.views.handler500'

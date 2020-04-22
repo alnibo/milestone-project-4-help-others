@@ -26,8 +26,18 @@ body {
     background-color: #c67605;
 }
 
-.alert {
-    margin: 0;
+.alert-message {
+  visibility: hidden;
+  width: 100%;
+  padding: 1rem;
+  position: fixed;
+  z-index: 100;
+  background-color: #C3E6CB;
+}
+
+.alert-message.show {
+    visibility: visible;
+    animation: alertMessageShow 0.5s, alertMessageHide 0.5s 3.5s;
 }
 
 footer {
@@ -204,8 +214,7 @@ input {
 }
 
 .read-btn {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    margin: 20px 10px 10px;
 }
 
 #myBtn {
@@ -229,10 +238,12 @@ input {
 
 .cart-form {
     padding-left: 10px;
+    margin: auto;
 }
 
 .cart-btn {
-    margin-left: 5px;
+    width: 75px;
+    margin: 10px auto;
 }
 
 .cart-buttons {
@@ -361,5 +372,24 @@ input {
     .search-btn-home {
         margin-top: 0;
         margin-left: 10px;
+    }
+}
+
+/* ******************** Keyframes ******************** */
+
+@keyframes alertMessageShow {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@keyframes alertMessageHide {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
     }
 }
