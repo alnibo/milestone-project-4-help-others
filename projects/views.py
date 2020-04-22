@@ -54,12 +54,19 @@ def edit_project(request,pk):
         edit_project_form = AddProjectForm(request.POST, request.FILES)
         
         if edit_project_form.is_valid():
-            edit_project_form.save()
+            project.name = edit_project_form.cleaned_data.get('name')
+            project.category = edit_project_form.cleaned_data.get('category')
+            project.description = edit_project_form.cleaned_data.get('description')
+            
+            if edit_project_form.cleaned_data.get('image'):
+                project.image = edit_project_form.cleaned_data.get('image')
+                
+            project.save()
             messages.success(request, "You have successfully updated your project.")
             return redirect(project_details, project.pk)
 
     else:
-        edit_project_form = AddProjectForm()
+        edit_project_form = AddProjectForm(initial={'name': project.name, 'category':project.category, 'description': project.description, 'image': project.image})
         messages.error(request, "Your project couldn't be updated.")
 
     return render(request, "edit_project.html", {"project": project, "edit_project_form": edit_project_form})
@@ -69,6 +76,13 @@ def edit_project(request,pk):
 @login_required
 def delete_project(request,pk):
     project = get_object_or_404(Project, pk=pk)
-    project.delete()
-    messages.success(request, "You have successfully deleted your project.")
-    return redirect(all_projects)
+    cart = request.session.get('cart', {})
+
+    if pk in cart:
+        messages.error(request, "Please remove this project from your cart first before you delete it.")
+        return redirect('projects')
+    
+    else:
+        project.delete()
+        messages.success(request, "You have successfully deleted your project.")
+        return redirect('projects')
