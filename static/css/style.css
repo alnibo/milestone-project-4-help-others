@@ -234,6 +234,10 @@ input {
     border: none;
 }
 
+.add-btn {
+    margin: 10px;
+}
+
 /* ******************** Cart Page ******************** */
 
 .cart-form {
@@ -354,6 +358,12 @@ input {
 .form-text {
     padding-top: 30px;
     text-align: center;
+}
+
+/* ******************** Project Details ******************** */
+
+.project-added {
+    color: rgba(117, 117, 117, 1);
 }
 
 /* ******************** Reset Password Pages ******************** */

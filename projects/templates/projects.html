@@ -30,7 +30,6 @@
                 <h5><strong>{{ project.category }}</strong></h5>
                 <p class="project-description">{{ project.description|truncatewords:11 }}</p>
                 
-				{% if user.is_authenticated %}
 				<form method="post" action="{% url 'add_to_cart' project.id %}">
 					{% csrf_token %}
 					<div class="input-group">
@@ -44,9 +43,7 @@
 						</div>
 					</div>
 				</form>
-				{%  else %}
-				    <p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to donate.</p>
-				{% endif %}
+				
                 <div class="text-center">
                     <a href="{% url 'project_details' project.pk %}" class="btn btn-light read-btn">Read More</a>
                 </div>

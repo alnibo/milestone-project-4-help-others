@@ -17,7 +17,8 @@
 				{% csrf_token %}
 				{{ add_project_form | as_bootstrap }}
 				<div class="col-12 text-center">
-					<button type="submit" class="btn btn-secondary"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Add Project</button>
+					<button type="submit" class="btn btn-success add-btn"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Add Project</button>
+                    <a href="{% url 'profile' %}" class="btn btn-light add-btn"><i class="fa fa-times-circle btn-icon" aria-hidden="true"></i>Cancel</a>
 				</div>
 			</form>
 		</div>

@@ -18,8 +18,8 @@
 				<h3>{{ project.name }}</h3>
 				<h5><strong>{{ project.category }}</strong></h5>
 				<p class="project-description">{{ project.description }}</p>
+                <p class="project-added">This project was added by {{ project.added_by|title }}</p>
 
-				{% if user.is_authenticated %}
 				<form method="post" action="{% url 'add_to_cart' project.id %}">
 					{% csrf_token %}
 					<div class="input-group">
@@ -33,11 +33,7 @@
 						</div>
 					</div>
 				</form>
-				{%  else %}
-				<p>Please <a href="{% url 'login' %}">login</a> or <a href="{% url 'register' %}">register</a> to
-					donate.</p>
-				{% endif %}
-
+				
                 {% if user.is_authenticated and user == project.added_by %}
                 <div class="text-center">
                     <a href="{% url 'edit_project' project.pk %}" class="btn btn-light read-btn"><i class="fa fa-pencil-square-o btn-icon" aria-hidden="true"></i>Edit</a>

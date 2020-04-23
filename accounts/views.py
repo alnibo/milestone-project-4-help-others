@@ -23,7 +23,7 @@ def register(request):
             # if the user is authenticated
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully registered")
+                messages.success(request, f"You have successfully registered, {user.username}!")
                 return redirect(reverse('index'))
             else:
                 messages.error(request,
@@ -47,7 +47,7 @@ def login(request):
 
             if user:
                 auth.login(user=user, request=request)
-                messages.success(request, "You have successfully logged in!")
+                messages.success(request, f"You have successfully logged in, {user.username}!")
                 return redirect(reverse('index'))
             else:
                 login_form.add_error(None,
@@ -68,6 +68,7 @@ def user_profile(request):
 @login_required
 def logout(request):
     """Log the user out"""
+    username = request.user.username
     auth.logout(request)
-    messages.success(request, "You have successfully been logged out!")
+    messages.success(request, f"You have successfully been logged out, {username}!")
     return redirect(reverse('index'))
