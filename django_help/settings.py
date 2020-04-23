@@ -31,7 +31,6 @@ DEBUG = os.getenv("DEVELOPMENT_MODE", False)
 
 ALLOWED_HOSTS = ['localhost', 'help-others.herokuapp.com']
 
-
 # Application definition
 
 INSTALLED_APPS = [

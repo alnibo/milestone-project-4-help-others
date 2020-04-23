@@ -1,7 +1,7 @@
 from django.shortcuts import render_to_response
 
 
-def handler404(request, exception, template_name="404_error.html"):
+def handler404(request, exception, template_name="error_pages/404_error.html"):
     """
     View that displayes the 404 error page
     """
@@ -10,7 +10,7 @@ def handler404(request, exception, template_name="404_error.html"):
     return response
 
 
-def handler500(request, exception, template_name="500_error.html"):
+def handler500(request, exception, template_name="error_pages/500_error.html"):
     """
     View that displayes the 500 error page
     """

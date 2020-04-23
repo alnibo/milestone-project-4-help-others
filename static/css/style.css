@@ -376,6 +376,16 @@ input {
     margin-top: 1rem;
 }
 
+/* ******************** 404/500 Error Pages ******************** */
+
+.error-div {
+    padding: 3rem 0;
+}
+
+.error-heading {
+    font-size: 6rem;
+}
+
 /* ******************** Media Queries ******************** */
 
 @media (min-width:768px) {

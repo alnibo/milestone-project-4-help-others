@@ -67,7 +67,6 @@ def edit_project(request,pk):
 
     else:
         edit_project_form = AddProjectForm(initial={'name': project.name, 'category':project.category, 'description': project.description, 'image': project.image})
-        messages.error(request, "Your project couldn't be updated.")
 
     return render(request, "edit_project.html", {"project": project, "edit_project_form": edit_project_form})
 
