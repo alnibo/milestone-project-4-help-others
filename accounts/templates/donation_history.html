@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ user|title }}'s Donations{% endblock %}
+
+{% block content %}
+<header class="container-fluid top-container">
+	<div class="row top-pic" title="group of kids"></div>
+	<h2 class="col-12 top-header">{{ user|title }}'s Donations</h2>
+</header>
+
+<section class="container section-container">
+	<div class="row panel-row">
+        {% if user.orders.all|length > 0 %}
+            {% for order in user.orders.all %}
+                {% for item in order.items.all %}
+                <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 display panel panel-default">
+                    <div class="panel-body">
+                        <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ item.project.image }}')"></div>
+                        <hr>
+                        <h3>{{ item.project.name }}</h3>
+                        <h5><strong>{{ item.project.category }}</strong></h5>
+                        <p class="project-description">{{ item.project.description|truncatewords:11 }}</p>
+                        <h5>Donated: <strong>{{ item.amount }}<i class="fa fa-eur" aria-hidden="true"></i></strong></h5>
+                        <p>{{ order.date }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endfor %}
+        {% else %}
+            <div class="cart-text">
+                <p>You haven't donated anyhting yet. Look through our projects to find something that you would like to donate money to.</p>
+                <div class="col text-center">
+                    <a href="{% url 'projects' %}" class="btn btn-secondary cart-buttons" role="button"><i class="fa fa-globe btn-icon" aria-hidden="true"></i>All Projects</a>
+                    <a href="{% url 'index' %}" class="btn btn-secondary cart-buttons" role="button"><i class="fa fa-home btn-icon" aria-hidden="true"></i>Back to Homepage</a>
+                </div>
+            </div>
+        {% endif %}
+	</div>
+
+    {% if user.orders.all|length > 0 %}
+        <div class="row checkout-box col-md-8 col-lg-5">
+            <div class="checkout-box-content text-center">
+                <h5>Totally donated</h5>
+                    <p><strong><i class="fa fa-eur" aria-hidden="true"></i></strong></p>
+            </div>
+        </div>
+    {% endif %}
+</section>
+
+<button onclick="topFunction()" id="myBtn" class="btn btn-warning" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+{% endblock %}

@@ -17,7 +17,7 @@
             <h3 class="card-title">{{ user|title }}'s Profile</h3>
             <p><strong>Username:</strong> {{ profile.username }}</p>
             <p class="card-text"><strong>Email:</strong> {{ profile.email }}</p>
-            <a href="{% url 'donation_history' %}" class="btn btn-success change-btn"><i class="fa fa-key btn-icon" aria-hidden="true"></i>See donation history</a>
+            <a href="{% url 'donation_history' %}" class="btn btn-success change-btn"><i class="fa fa-money btn-icon" aria-hidden="true"></i>See donation history</a>
             <a href="{% url 'password_reset' %}" class="btn btn-danger change-btn"><i class="fa fa-key btn-icon" aria-hidden="true"></i>Change password</a>
         </div>
     </div>

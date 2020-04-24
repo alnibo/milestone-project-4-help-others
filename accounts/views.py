@@ -72,3 +72,8 @@ def logout(request):
     auth.logout(request)
     messages.success(request, f"You have successfully been logged out, {username}!")
     return redirect(reverse('index'))
+
+
+def donation_history(request):
+    """ view that displays the donation history"""
+    return render(request, "donation_history.html")
