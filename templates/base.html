@@ -29,6 +29,9 @@
                     <a class="nav-link" href="{% url 'index' %}">Home</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="{% url 'about_us' %}">What We Do</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{% url 'projects' %}">Projects</a>
                 </li>
                 <li class="nav-item dropdown">
@@ -37,13 +40,13 @@
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="{% url 'category' category='Animals' %}">Animals</a>
-                        <a class="dropdown-item" href="{% url 'category' category='Arts' %}">Arts & Culture</a>
-                        <a class="dropdown-item" href="{% url 'category' category='Community' %}">Community & Family</a>
+                        <a class="dropdown-item" href="{% url 'category' category='Arts & Culture' %}">Arts & Culture</a>
+                        <a class="dropdown-item" href="{% url 'category' category='Community & Family' %}">Community & Family</a>
                         <a class="dropdown-item" href="{% url 'category' category='Education' %}">Education</a>
                         <a class="dropdown-item" href="{% url 'category' category='Environment' %}">Environment</a>
-                        <a class="dropdown-item" href="{% url 'category' category='Disaster' %}">Disaster Relief</a>
-                        <a class="dropdown-item" href="{% url 'category' category='Health' %}">Health & Medical</a>
-                        <a class="dropdown-item" href="{% url 'category' category='Human' %}">Human Services</a>
+                        <a class="dropdown-item" href="{% url 'category' category='Disaster Relief' %}">Disaster Relief</a>
+                        <a class="dropdown-item" href="{% url 'category' category='Health & Medical' %}">Health & Medical</a>
+                        <a class="dropdown-item" href="{% url 'category' category='Human Services' %}">Human Services</a>
                         <a class="dropdown-item" href="{% url 'category' category='Housing' %}">Housing</a>
                     </div>
                 </li>
@@ -88,7 +91,7 @@
             <span class="d-none d-sm-inline footer-text">This website was created for educational purposes only.</span>
         </div>
     </footer>
-    
+
     <script src="{% static 'js/script.js' %}"></script>
 </body>
 </html>

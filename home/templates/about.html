@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
+
+{% block head_title %}What We Do{% endblock %}
+
+{% block content %}
+<header class="container-fluid top-container">
+    <div class="row top-pic" title="group of kids"></div>
+    <h2 class="col-12 top-header">What We Do</h2>
+</header>
+
+<section class="container section-container">
+    <div class="row checkout-box col-md-8">
+        <div class="checkout-box-content text-center">
+            <p>Help Others connects private donors with foundations, initiatives and nonprofits in many countries all over the world. We help nonprofits access funding and support by sharing their projects with our community. There are many projects in over 8 categories that would love your help.</p>
+        </div>
+    </div>
+    <div class="row">
+        <a href="{% url 'projects' %}" class="btn btn-light what-btn" role="button"><i class="fa fa-info-circle btn-icon" aria-hidden="true"></i>View all Projects</a>
+    </div>
+</section>
+
+<hr class="divider">
+
+<section class="container-fluid section-container text-center">
+    <h3 class="how-header">How It Works</h3>
+    <div class="row">
+        <div class="col-12 col-md-6 col-lg-3 about-box box-1">
+            <div class="overlay">
+                <h4 class="about-h4">Nonprofits</h4>
+                <i class="fa fa-thumbs-o-up fa-4x about-icon" aria-hidden="true"></i>
+                <p class="about-text">Nonprofits and Foundations are able to upload their projects on our Website, sharing interesting information about what they do with a big community.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 about-box box-2">
+            <div class="overlay">
+                <h4 class="about-h4">Donors</h4>
+                <i class="fa fa-gift fa-4x about-icon" aria-hidden="true"></i>
+                <p class="about-text">Individual people like you are able to browse through all projects and donate how much they want to their favorite projects.</p>
+            </div> 
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 about-box box-3">
+            <div class="overlay">
+                <h4 class="about-h4">Help Others</h4>
+                <i class="fa fa-building fa-4x about-icon" aria-hidden="true"></i>
+                <p class="about-text">We make sure this money savely arrives at the respective initiative.</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-3 about-box box-4">
+            <div class="overlay">
+                <h4 class="about-h4">Impact</h4>
+                <i class="fa fa-globe fa-4x about-icon" aria-hidden="true"></i>
+                <p class="about-text">With your donations the nonprofits are able to support and execute their projects in order to help poor communities.</p>
+            </div> 
+        </div>
+    </div>
+</section>
+
+<section class="container-fluid end-container">
+</section>
+
+<button onclick="topFunction()" id="myBtn" class="btn btn-warning" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+{% endblock %}

@@ -3,13 +3,13 @@ from django.contrib.auth.models import User
 
 categories = (
     ('Animals', 'Animals'),
-    ('Arts', 'Arts & Culture'),
-    ('Community', 'Community & Family'),
+    ('Arts & Culture', 'Arts & Culture'),
+    ('Community & Family', 'Community & Family'),
     ('Education', 'Education'),
     ('Environment', 'Environment'),
-    ('Disaster', 'Disaster Relief'),
-    ('Health', 'Health & Medical'),
-    ('Human', 'Human Services'),
+    ('Disaster Relief', 'Disaster Relief'),
+    ('Health & Medical', 'Health & Medical'),
+    ('Human Services', 'Human Services'),
     ('Housing', 'Housing'),
 )
 

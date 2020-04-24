@@ -36,11 +36,9 @@
         {% endfor %}
     </div>
 
-    <div class="row checkout-box col-md-8 col-lg-5">
-        <div>
-            <h5>Total</h5>
-            <p><strong>{{ total }}<i class="fa fa-eur" aria-hidden="true"></i></strong></p>
-        </div>
+    <div class="row checkout-box col-md-8 col-lg-5 text-center">
+            <h5 class="col-12">Total</h5>
+            <h6 class="col-12"><strong>{{ total }}<i class="fa fa-eur" aria-hidden="true"></i></strong></h6>
     </div>
 
     <form class="row checkout-form" role="form" method="post" id="payment-form" action="{% url 'checkout' %}">

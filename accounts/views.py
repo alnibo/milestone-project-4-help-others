@@ -4,6 +4,8 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from projects.models import Project
 from accounts.forms import UserLoginForm, UserRegistrationForm
+from checkout.models import OrderLineItem
+from django.db.models import Sum
 
 
 def register(request):
@@ -75,5 +77,6 @@ def logout(request):
 
 
 def donation_history(request):
-    """ view that displays the donation history"""
-    return render(request, "donation_history.html")
+    """View that displays the donation history"""
+    total_amount = OrderLineItem.objects.filter(order__user=request.user).aggregate(Sum('amount')).get('amount__sum')
+    return render(request, "donation_history.html", {"total_amount": total_amount})
