@@ -4,7 +4,7 @@ from projects.models import Project
 
 
 class Donations(models.Model):
-    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, null=True, default="1", on_delete=models.SET_DEFAULT)
     project = models.ForeignKey(Project)
     amount = models.IntegerField(blank=False)
 

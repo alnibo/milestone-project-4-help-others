@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block head_title %}{{ user|title }}'s Donations{% endblock %}
+
+{% block content %}
+<header class="container-fluid top-container">
+	<div class="row top-pic" title="group of kids"></div>
+	<h2 class="col-12 top-header">{{ user|title }}'s Donations</h2>
+</header>
+
+<section class="container section-container">
+
+	<div class="row panel-row">
+        
+        {% for donation in donations %}
+		<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 display panel panel-default">
+			<div class="panel-body">
+				<div class="project" style="background-image: url('{{ MEDIA_URL }}{{ donation.project.image }}')"></div>
+				<hr>
+				<h3>{{ donation.project.name }}</h3>
+				<h5><strong>{{ donation.project.category }}</strong></h5>
+				<p class="project-description">{{ donation.project.description }}</p>				
+			</div>
+		</div>
+        {% endfor %}
+	</div>
+</section>
+
+<button onclick="topFunction()" id="myBtn" class="btn btn-warning" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
+{% endblock %}
