@@ -49,26 +49,31 @@ def add_project(request):
 @login_required
 def edit_project(request,pk):
     project = get_object_or_404(Project, pk=pk)
+    user = request.user
 
-    if request.method == 'POST':
-        edit_project_form = AddProjectForm(request.POST, request.FILES)
-        
-        if edit_project_form.is_valid():
-            project.name = edit_project_form.cleaned_data.get('name')
-            project.category = edit_project_form.cleaned_data.get('category')
-            project.description = edit_project_form.cleaned_data.get('description')
-            
-            if edit_project_form.cleaned_data.get('image'):
-                project.image = edit_project_form.cleaned_data.get('image')
-                
-            project.save()
-            messages.success(request, "You have successfully updated your project.")
-            return redirect(project_details, project.pk)
-
+    if not user == project.added_by:
+        messages.success(request, "You have no permission to edit this project.")
+        return render(request, "project_details.html", {"project": project})
     else:
-        edit_project_form = AddProjectForm(initial={'name': project.name, 'category':project.category, 'description': project.description, 'image': project.image})
+        if request.method == 'POST':
+            edit_project_form = AddProjectForm(request.POST, request.FILES)
+            
+            if edit_project_form.is_valid():
+                project.name = edit_project_form.cleaned_data.get('name')
+                project.category = edit_project_form.cleaned_data.get('category')
+                project.description = edit_project_form.cleaned_data.get('description')
+                
+                if edit_project_form.cleaned_data.get('image'):
+                    project.image = edit_project_form.cleaned_data.get('image')
+                    
+                project.save()
+                messages.success(request, "You have successfully updated your project.")
+                return redirect(project_details, project.pk)
 
-    return render(request, "edit_project.html", {"project": project, "edit_project_form": edit_project_form})
+        else:
+            edit_project_form = AddProjectForm(initial={'name': project.name, 'category':project.category, 'description': project.description, 'image': project.image})
+
+        return render(request, "edit_project.html", {"project": project, "edit_project_form": edit_project_form})
 
 
 # Delete Project
