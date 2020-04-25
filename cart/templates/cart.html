@@ -21,7 +21,7 @@
                         <h3>{{ item.project.name }}</h3>
                         <h5><strong>{{ item.project.category }}</strong></h5>
                         <p class="project-description">{{ item.project.description }}</p>
-                        <div class="row">
+                        <div class="row amend-row">
                             <form class="form-inline cart-form" method="POST" action="{% url 'adjust_cart' item.id %}">
                                 {% csrf_token %}
                                 <div>
@@ -44,7 +44,7 @@
             {% endfor %}
         {% else %}
             <div class="cart-text">
-                <p>Your cart is currently empty. Look through our projects to find something that you would like to donate money to.</p>
+                <p>Your cart is currently empty. Look through our projects to find something that you would like to support.</p>
                 <div class="col text-center">
                     <a href="{% url 'projects' %}" class="btn btn-secondary cart-buttons" role="button"><i class="fa fa-globe btn-icon" aria-hidden="true"></i>All Projects</a>
                     <a href="{% url 'index' %}" class="btn btn-secondary cart-buttons" role="button"><i class="fa fa-home btn-icon" aria-hidden="true"></i>Back to Homepage</a>
@@ -54,7 +54,7 @@
     </div>
     <div class="row checkout-box col-md-8 col-lg-5">
         <div class="checkout-box-content text-center">
-            <h5>Total</h5>
+            <h5><strong>Total</strong></h5>
             <p><strong>{{ total }}<i class="fa fa-eur" aria-hidden="true"></i></strong></p>
             {% if project_count > 0 %}
                 <a href="{% url 'checkout' %}" class="btn btn-success" role="button"><i class="fa fa-check-circle btn-icon" aria-hidden="true"></i>Checkout</a>

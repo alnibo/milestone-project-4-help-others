@@ -10,10 +10,10 @@
 
 <section class="container section-container">
 	<div class="row">
-		<div class="display search-bar">
+		<div class="col-sm-12 col-md-8 offset-md-2">
 			<form action="{% url 'search' %}" method="get">
-				<input type="text" name="q">
-				<button type="search" class="btn btn-warning"><i class="fa fa-search btn-icon" aria-hidden="true"></i>Search</button>
+				<input class="col-12 col-md-8 input-projects" type="text" name="q">
+				<button type="search" class="btn btn-warning search-btn-projects col-12 col-md-3"><i class="fa fa-search btn-icon" aria-hidden="true"></i>Search</button>
 			</form>
 		</div>
 	</div>
@@ -29,7 +29,7 @@
                 </a>
                 <h5><strong>{{ project.category }}</strong></h5>
                 <p class="project-description">{{ project.description|truncatewords:11 }}</p>
-                
+
 				<form method="post" action="{% url 'add_to_cart' project.id %}">
 					{% csrf_token %}
 					<div class="input-group">

@@ -79,11 +79,12 @@ footer {
 
 .welcome-heading {
     text-align: center;
-    padding: 50px 0;
+    padding: 50px 0 10px;
 }
 
 .sub-heading-home {
     padding-top: 20px;
+    font-size: 1.5rem;
 }
 
 .search-home {
@@ -91,11 +92,13 @@ footer {
     padding-bottom: 30px;
 }
 
-.input-home {
+.input-home,
+.input-projects {
     height: 38px;
 }
 
-.search-btn-home {
+.search-btn-home,
+.search-btn-projects {
     margin-top: 10px;
 }
 
@@ -131,8 +134,17 @@ footer {
     padding-bottom: 30px;
 }
 
+.what-container {
+    background-color: white;
+}
+
+.what-box {
+    margin: 10px auto 0;
+    padding: 10px;
+}
+
 .what-btn {
-    margin: 30px auto 0;
+    margin: 20px auto 0;
 }
 
 .about-box {
@@ -141,6 +153,13 @@ footer {
     min-width: 15rem;
     color: white;
     padding: 0;
+    border: 1px solid rgb(201, 201, 201);
+}
+
+.how-container {
+    background-image: url("/media/images/background.png");
+    padding-top: 40px;
+    padding-bottom: 100px;
 }
 
 .box-1 {
@@ -203,8 +222,10 @@ footer {
     background-color:  rgb(201, 201, 201);
     padding-top: 0.5rem;
     padding-bottom: 0.2rem;
+    margin-bottom: 0;
 }
 
+.what-container,
 .section-container {
     padding-top: 30px;
     padding-bottom: 40px;
@@ -213,10 +234,6 @@ footer {
 input {
     border-radius: 3px;
     border: 1px solid #ddd;
-}
-
-.search-bar {
-    padding-left: 10px;
 }
 
 .search-btn {
@@ -288,6 +305,16 @@ input {
     font-size: 25px;
 }
 
+/* ******************** Project Details ******************** */
+
+.details-container {
+    padding-bottom: 20px;
+}
+
+.project-added {
+    color: rgba(117, 117, 117, 1);
+}
+
 /* ******************** Add Project Page ******************** */
 
 #id_image {
@@ -307,7 +334,7 @@ input {
 }
 
 .cart-btn {
-    width: 75px;
+    width: 50px;
     margin: 10px auto;
 }
 
@@ -326,6 +353,10 @@ input {
     text-align: center;
 }
 
+.amend-row {
+    width: 99%;
+}
+
 .checkout-box {
     border: 1px solid rgba(168, 168, 168, 1);
     border-radius: 3px;
@@ -335,6 +366,7 @@ input {
     padding: 10px;
 }
 
+.what-box-content,
 .checkout-box-content {
     width: 100%;
 }
@@ -348,17 +380,12 @@ input {
     margin: 50px auto;
 }
 
-.checkout-form legend {
-    padding-left: 10px;
-}
-
 /* ******************** Profile Page ******************** */
 
 .profile-card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     width: 18rem;
     margin: auto;
-    margin-bottom: 40px;
 }
 
 .card-img-top {
@@ -402,6 +429,10 @@ input {
     margin: 20px 10px 0;
 }
 
+.buttons-container {
+    padding-bottom: 30px;
+}
+
 /* ******************** Login/Registration Pages ******************** */
 
 .general-card {
@@ -419,12 +450,6 @@ input {
 .form-text {
     padding-top: 30px;
     text-align: center;
-}
-
-/* ******************** Project Details ******************** */
-
-.project-added {
-    color: rgba(117, 117, 117, 1);
 }
 
 /* ******************** Reset Password Pages ******************** */
@@ -450,7 +475,8 @@ input {
 /* ******************** Media Queries ******************** */
 
 @media (min-width:768px) {
-    .search-btn-home {
+    .search-btn-home,
+    .search-btn-projects {
         margin-top: 0;
         margin-left: 10px;
     }
