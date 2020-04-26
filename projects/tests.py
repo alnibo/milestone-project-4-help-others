@@ -9,4 +9,5 @@ class ProjectTest(TestCase):
 
     def test_str(self):
         test_name = Project(name='Test Project')
-        self.assertEqual(str(test_name), 'Test Project')
+        test_user = Project(added_by='user')
+        self.assertEqual(str(test_name, test_user), 'Test Project user')

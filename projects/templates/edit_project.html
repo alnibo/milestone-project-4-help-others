@@ -17,7 +17,7 @@
 				{% csrf_token %}
 				{{ edit_project_form | as_bootstrap }}
 				<div class="col-12 text-center">
-					<button type="submit" class="btn btn-success read-btn"><i class="fa fa-check-square btn-icon" aria-hidden="true"></i>Confirm Changes</button>
+					<button type="submit" class="btn btn-warning read-btn"><i class="fa fa-check-square btn-icon" aria-hidden="true"></i>Confirm Changes</button>
                     <a href="{% url 'project_details' project.pk %}" class="btn btn-light read-btn"><i class="fa fa-times-circle btn-icon" aria-hidden="true"></i>Cancel</a>
 				</div>
 			</form>

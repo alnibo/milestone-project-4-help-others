@@ -5,7 +5,7 @@ html {
 }
 
 body {
-    font-family: Arial;
+    font-family:  Arial;
     padding-top: 56px;
 }
 
@@ -16,8 +16,6 @@ body {
 .badge {
     padding-left: 9px;
     padding-right: 9px;
-    -webkit-border-radius: 9px;
-    -moz-border-radius: 9px;
     border-radius: 9px;
 }
 
@@ -80,6 +78,10 @@ footer {
 .welcome-heading {
     text-align: center;
     padding: 50px 0 10px;
+}
+
+.home-heading {
+    font-size: 3rem;
 }
 
 .sub-heading-home {

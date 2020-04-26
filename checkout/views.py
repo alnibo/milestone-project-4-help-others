@@ -48,7 +48,7 @@ def checkout(request):
                     messages.error(request, "Your card was declined!")
 
                 if customer.paid:
-                    messages.error(request, "You have successfully paid")
+                    messages.success(request, "You have successfully paid. Thank you for your donation.")
                     request.session['cart'] = {}
                     return redirect(reverse('projects'))
                 else:

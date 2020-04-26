@@ -17,8 +17,8 @@
             <h3 class="card-title">{{ user|title }}'s Profile</h3>
             <p><strong>Username:</strong> {{ profile.username }}</p>
             <p class="card-text"><strong>Email:</strong> {{ profile.email }}</p>
-            <a href="{% url 'donation_history' %}" class="btn btn-success change-btn"><i class="fa fa-money btn-icon" aria-hidden="true"></i>See donation history</a>
-            <a href="{% url 'password_reset' %}" class="btn btn-danger change-btn"><i class="fa fa-key btn-icon" aria-hidden="true"></i>Change password</a>
+            <a href="{% url 'donation_history' %}" class="btn btn-warning change-btn"><i class="fa fa-money btn-icon" aria-hidden="true"></i>See donation history</a>
+            <a href="{% url 'password_reset' %}" class="btn btn-secondary change-btn"><i class="fa fa-key btn-icon" aria-hidden="true"></i>Change Password</a>
         </div>
     </div>
     </div>
@@ -32,9 +32,11 @@
             {% for project in user_projects %}
                 <div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 display panel panel-default">
                     <div class="panel-body">
-                        <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
-                        <hr>
-                        <h3>{{ project.name }}</h3>
+                        <a href="{% url 'project_details' project.pk %}" class="link-to-details">
+                            <div class="project" style="background-image: url('{{ MEDIA_URL }}{{ project.image }}')"></div>
+                            <hr>
+                            <h3>{{ project.name }}</h3>
+                        </a>
                         <h5><strong>{{ project.category }}</strong></h5>
                         <p class="project-description">{{ project.description|truncatewords:11 }}</p>
 
@@ -67,7 +69,7 @@
 <section class="container buttons-container">
     <div class="row">
         <div class="col profile-buttons text-center">
-            <a href="{% url 'add_project' %}" class="btn btn-secondary profile-btn" role="button"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Add Project</a>
+            <a href="{% url 'add_project' %}" class="btn btn-warning profile-btn" role="button"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Add Project</a>
             <a href="{% url 'index' %}" class="btn btn-secondary profile-btn" role="button"><i class="fa fa-home btn-icon" aria-hidden="true"></i>Back to Homepage</a>
         </div>
     </div>
