@@ -47,45 +47,53 @@ def add_project(request):
 
 # Edit Project
 @login_required
-def edit_project(request,pk):
+def edit_project(request, pk):
     project = get_object_or_404(Project, pk=pk)
     user = request.user
 
     if not user == project.added_by:
-        messages.success(request, "You have no permission to edit this project.")
+        messages.success(request,
+                         "You have no permission to edit this project.")
         return render(request, "project_details.html", {"project": project})
     else:
         if request.method == 'POST':
             edit_project_form = AddProjectForm(request.POST, request.FILES)
-            
+
             if edit_project_form.is_valid():
                 project.name = edit_project_form.cleaned_data.get('name')
                 project.category = edit_project_form.cleaned_data.get('category')
                 project.description = edit_project_form.cleaned_data.get('description')
-                
+
                 if edit_project_form.cleaned_data.get('image'):
                     project.image = edit_project_form.cleaned_data.get('image')
-                    
+
                 project.save()
-                messages.success(request, "You have successfully updated your project.")
+                messages.success(request,
+                                 "You have successfully updated your project.")
                 return redirect(project_details, project.pk)
 
         else:
-            edit_project_form = AddProjectForm(initial={'name': project.name, 'category':project.category, 'description': project.description, 'image': project.image})
+            edit_project_form = AddProjectForm(
+                                    initial={'name': project.name,
+                                             'category': project.category,
+                                             'description': project.description,
+                                             'image': project.image})
 
-        return render(request, "edit_project.html", {"project": project, "edit_project_form": edit_project_form})
+        return render(request,
+                      "edit_project.html", {"project": project,
+                                            "edit_project_form": edit_project_form})
 
 
 # Delete Project
 @login_required
-def delete_project(request,pk):
+def delete_project(request, pk):
     project = get_object_or_404(Project, pk=pk)
     cart = request.session.get('cart', {})
 
     if pk in cart:
         messages.error(request, "Please remove this project from your cart first before you delete it.")
         return redirect('projects')
-    
+
     else:
         project.delete()
         messages.success(request, "You have successfully deleted your project.")
