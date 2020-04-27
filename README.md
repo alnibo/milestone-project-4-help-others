@@ -12,12 +12,33 @@ This website connects private donors with foundations, initiatives and nonprofit
 
 1. [Demo](#demo)
 2. [UX](#ux)
-3. [Database](#database)
+    - [Target Audience](#target-audience)
+    - [User Stories](#user-stories)
+    - [Wireframes](#wireframes)
+3. [Information Architecture](#information-architecture)
+    - [Database](#database)
+    - [Data Models](#data-models)
 4. [Features](#features)
+    - [Existing Features](#existing-features)
+    - [Features Left to Implement](#features-left-to-implement)
 5. [Technologies Used](#technologies-used)
+    - [Languages](#languages)
+    - [Libraries and Frameworks](#libraries-and-frameworks)
+    - [Tools](#tools)
+    - [Databases](#databases)
 6. [Testing](#testing)
+    - [Code Validation](#code-validation)
+    - [Features Testing](#features-testing)
+    - [Responsiveness Testing](#responsiveness-testing)
+    - [User Stories Testing](#user-stories-testing)
 7. [Deployment](#deployment)
+    - [GitHub](#github)
+    - [Heroku](#heroku)
+    - [Amazon AWS S3](#amazon-aws-s3)
 8. [Credits](#credits)
+    - [Content](#content)
+    - [Media](#media)
+    - [Acknowledgements](#acknowledgements)
 
 ## Demo
 
@@ -25,7 +46,9 @@ Check out the deployed website [here](https://help-others.herokuapp.com/).
 
 ## UX
 
-To create a sleek look and a homogeneous experience for the user I used the colors grey, white and black consistently throughout the project. For a little bit of color I styled certain buttons in orange and the delete/remove buttons in red.
+To create a sleek look and a homogeneous experience for the user I used the colors grey, white and black consistently throughout the project. For a little bit of color I styled certain buttons in orange. For an inuitive user experience I colored the delete/remove buttons in red.
+
+I chose Arial as the primary font because of clear and timeless design.
 
 In order to create an easy and intuitive user experience I designed the website in a way where it is simple for the user to use.
 
@@ -73,9 +96,72 @@ As a user I expect/would like/need:
 
 In the planing process using [Balsamiq](https://balsamiq.cloud/) [these wireframes](https://github.com/alnibo/milestone-project-4-help-others/tree/master/Other/Wireframes) were created in order to design the layout for this project for mobile, medium and desktop views.
 
-## Database
+## Information Architecture
 
+### Database
 
+- During develpment of this project I worked with the standard **sqlite3** database, which is installed with Django.
+- For the deployment, the SQL database **Postgres** was used, which is provided by Heroku.
+
+- **Hint for other developers:** As I was following the Code Institute course while setting up my website I also switched databases and set up the AWS connection quite early on in the middle of my project. This created some problems as this is meant to do at the end of the project. Due to some errors I was forced to delete my sqlite3 database and start it from scratch. Then at the end of my project I moved over to the Postgres database and set up the AWS connection.
+
+### Data Models
+
+#### User Model
+
+The standard User model was used in this project, which is provided by `django.contrib.auth.models`.
+
+#### Project Model
+
+Within the `projects` app, the **Project** model contains all the data need for a donation project.
+
+| Name | Key in db | Field Type | Validation |
+| --- | --- | --- | --- |
+| Project Name | name | CharField | max_length=254 |
+| Category | category | CharField | max_length=254, choices=categories |
+| Description | description | TextField | --- |
+| Image | image | ImageField | blank=True |
+| Added By | added_by | ForeignKey(User) | null=True, default="1", on_delete=models.SET_DEFAULT |
+
+The category choices are the following:
+- Animals
+- Arts & Culture
+- Community & Family
+- Education
+- Environment
+- Disaster Relief
+- Health & Medical
+- Human Services
+- Housing
+
+#### Checkout Models
+
+Within the checkout app, the Order and OrderLineItem models hold the data that is needed for users to execute orders.
+
+I used `related_name=orders` and `related_name=items` to call the donation history of a specific user.
+
+##### Order Model
+
+| Name | Key in db | Field Type | Validation |
+| --- | --- | --- | --- |
+| User | user | ForeignKey(User) | null=True, default="1", on_delete=models.SET_DEFAULT, related_name="orders" |
+| Full Name | full_name | CharField | max_length=50, blank=False |
+| Phone Number | phone_number | CharField | max_length=20, blank=False |
+| Country | country | CharField | max_length=40, blank=False |
+| Postcode | postcode | CharField | max_length=20, blank=True |
+| Town or City | town_or_city | CharField | max_length=40, blank=False |
+| Address line 1 | street_address1 | CharField | max_length=40, blank=False |
+| Address line 2 | street_address2 | CharField | max_length=40, blank=False |
+| County | county | max_length=40, CharField | blank=False |
+| Date | date | DateField | --- |
+
+##### Order Line Item Model
+
+| Name | Key in db | Field Type | Validation |
+| --- | --- | --- | --- |
+| Order | order | ForeignKey(Order) | null=False, related_name="items" |
+| Project | project | ForeignKey(Project) | null=False |
+| Amount | amount | IntegerField | blank=False |
 
 ## Features
 
@@ -143,31 +229,53 @@ In the planing process using [Balsamiq](https://balsamiq.cloud/) [these wirefram
 
 ## Technologies Used
 
-1. HTML - this standard markup language was used for the structure and layout of this website
+### Languages
 
-2. CSS - to describe the style of the HTML document
+- HTML - this standard markup language was used for the structure and layout of this website
 
-3. JavaScript - to enable interactive features in my website, such as e.g. the 'back to the top' button and the alert messages
+- CSS - to describe the style of the HTML document
 
-4. [Python](https://www.python.org/) - the core language of this website
+- JavaScript - to enable interactive features in my website, such as e.g. the 'back to the top' button and the alert messages
 
-5. [Django](https://www.djangoproject.com/) - a core python web framework
+- [Python](https://www.python.org/) - the core language of this website
 
-6. [jQuery](https://jquery.com/) - used to initialize message elements.
+### Libraries and Frameworks
 
-7. [Bootstrap](https://getbootstrap.com/) - a front-end component library to build a responsive website. With Bootstraps grid system the layout of this website was created. Other Bootstrap features used for this website are buttons, forms, navbar, footer, badge
+- [Django](https://www.djangoproject.com/) - a core python web framework
 
-8. [Font Awesome](https://fontawesome.com/v4.7.0/) - icons for better readability and styling
+- [jQuery](https://jquery.com/) - used to initialize message elements.
 
-9. [Github](https://github.com/) - used for development version control using Git
+- [Bootstrap](https://getbootstrap.com/) - a front-end component library to build a responsive website. With Bootstraps grid system the layout of this website was created. Other Bootstrap features used for this website are buttons, forms, navbar, footer, badge
 
-10. [Heroku](https://heroku.com) - this cloud platform was used to run the deployed application
+- [Font Awesome](https://fontawesome.com/v4.7.0/) - icons for better readability and styling
 
-11. [Travis](https://travis-ci.org/) - used to build and test the code
+- [Stripe](https://stripe.com/) - payment platform for online pament processing
 
-12. [Gitpod](https://www.gitpod.io/) - this online IDE was used for the development of this application
+- [Psycopg2](https://pypi.org/project/psycopg2/) - allows to connect to PostgreSQL database
 
-13. [Balsamiq](https://balsamiq.cloud/) - this web-based mockup tool was used to visualize the layout and design of the website
+- [Gunicorn](https://pypi.org/project/gunicorn/) - a Python WSGI HTTP Server for UNIX, required to connect to Heroku
+
+### Tools
+
+- [Amazon AWS S3](https://aws.amazon.com/) - to store statics and media files
+
+- [Boto3](https://boto3.amazonaws.com/v1/documentation/api/latest/index.html) - to create, configure and manage AWS S3
+
+- [Github](https://github.com/) - used for development version control using Git
+
+- [Heroku](https://heroku.com) - this cloud platform was used to run the deployed application
+
+- [Travis](https://travis-ci.org/) - used to build and test the code
+
+- [Gitpod](https://www.gitpod.io/) - this online IDE was used for the development of this application
+
+- [Balsamiq](https://balsamiq.cloud/) - this web-based mockup tool was used to visualize the layout and design of the website
+
+### Databases
+
+- [SQLite3](https://www.sqlite.org/index.html) - SQL database provided by Django - used in development phase
+
+- [Postgres Heroku](https://www.heroku.com/postgres) - SQL database provided by Heroku - used for production
 
 ## Testing
 
@@ -203,7 +311,7 @@ No other errors were shown.
 
 All other functionalities were manually tested.
 
-### Features testing
+### Features Testing
 
 Throughout the development of this website all features were manually tested. The following table gives an overview of how the features were tested and lists resolved and remaining bugs.
 
@@ -247,7 +355,7 @@ Throughout the development of this website all features were manually tested. Th
 | Edit Project | Form | - test if form is already displaying current information about the project in the form fields | Initially it was an empty form, this was solved by passing in an initial argument for each of the form fields in form of a dictionary like this `edit_project_form = AddProjectForm(initial={'name': project.name, 'category':project.category, ... })` |
 | | Category Dropdown Field | - test if dropdown selection menu works | No bugs |
 | | Choose file Button | - test if button opens a pop up window where an image can be selected to upload | No bugs |
-| | Confirm Changes Button | - test if button submits the edit form and correctly updates the project's information in the database | - Initially a when submitting the edit form instead of updating the current project a new project was added, by setting each field to data coming back from the form `project.name = edit_project_form.cleaned_data.get('name')` and saving it `project.save()` made it work so that it would update the existing project <br> - Another problem was that the if the user decides to keep the same image and doesn't select a new image he/she was prompted to select an image. This was solved by adding `if edit_project_form.cleaned_data.get('image'): project.image = edit_project_form.cleaned_data.get('image')` |
+| | Confirm Changes Button | - test if button submits the edit form and correctly updates the project's information in the database | - Initially a when submitting the edit form instead of updating the current project a new project was added, by setting each field to data coming back from the form `project.name = edit_project_form.cleaned_data.get('name')` and saving it `project.save()` made it work so that it would update the existing project <br> - Another problem was that the if the user decides to keep the same image and doesn't select a new image he/she was prompted to select an image. This was solved by adding <br> `if edit_project_form.cleaned_data.get('image'): project.image = edit_project_form.cleaned_data.get('image')` |
 | | Edit Functionality | - test when manually adding the id of the project after the url ../projects/edit/ if possible to access the edit page | Initially this was possible, but solved adding this if statement `if not user == project.added_by:`, telling the user that he/she doesn't have permission to edit this project and redirecting him/her back to the project details page |
 | | Cancel Button | - test if button redirects back to the correct project details page and doesn't update the project's information | No bugs |
 | Donation History | Total Amount | - check if total amount is correct | Initially total amount was summing up all donations from every user of the database, this was solved by adding `filter(order__user=request.user)` to only include projects that were added by the current user |
@@ -266,11 +374,11 @@ Throughout the development of this website all features were manually tested. Th
 | 404 Error Page | All Projects Button | - test if button redirects to projects page | No bugs |
 | | Back to Homepage Button | - test if button redirects to index/home page | No bugs |
 
-### Responsiveness testing
+### Responsiveness Testing
 
 Ensuring its responsiveness this website was tested across different mobile, tablet and desktop devices using Chrome developer tools. In a second step it was then tested across the most common internet browsers (Safari, Chrome, Internet Explorer, and Firefox), making sure it is compatible. For a detailed overview, please see this excel file [here](https://github.com/alnibo/milestone-project-4-help-others/blob/master/Other/Testing-resp-comp%20MS4.pdf).
 
-### User stories testing
+### User Stories Testing
 
 #### User story 1
 - The user is welcomed on the 'index' page providing the user some initial information about the aim of this website to help others and some informative stats. The 'What We Do' page provides more detailed information about the site's purpose and gives clear information on how it actually works.
@@ -406,7 +514,7 @@ Following steps were taken to deploy my project:
     - Alternatively, what I did, was on the Heroku website under the tab 'Deploy' select GitHub and type in your project's repository to link it to Heroku. Then further down enable Automatic Deploys, which then deploys your code to Heroku everytime you push you code to GitHub.
     
 
-### AWS
+### Amazon AWS S3
 
 These are the steps were taken to configure the external server Amazon AWS S3:
 
@@ -533,6 +641,6 @@ To have active navbar links I found a solution form [here](https://stackoverflow
 
 Last but not least, I would like to thank my mentor Aaron Sinnott for his help and everyone from tutur support and Student Care for their help and guidance throughout this project. 
 
-Also the biggest thank you goes out to my girlfriend who accepted and was ok with me sitting for long ours in front of the computer and supported me every step along the way.
+Also the biggest thank you goes out to my girlfriend who accepted and was ok with me sitting long hours in front of the computer and who supported me every step along the way.
 
 ### This project was created for educational purposes only.
