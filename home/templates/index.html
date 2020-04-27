@@ -18,7 +18,7 @@
         <div class="col-sm-12 col-md-8 offset-md-2">
             <form class="row search-home" action="{% url 'search' %}" method="get">
                 <input class="col-12 col-md-8 input-home" type="text" name="q">
-                <button type="search" class="btn btn-warning search-btn-home col-12 col-md-3"><i class="fa fa-search btn-icon" aria-hidden="true"></i>Search</button>
+                <button class="btn btn-warning search-btn-home col-12 col-md-3"><i class="fa fa-search btn-icon" aria-hidden="true"></i>Search</button>
             </form>
         </div>
     </div>
@@ -27,27 +27,27 @@
 <section class="container-fluid section-container stats-container">
     <div class="row text-center">
         <div class="col-12 col-md stat-box">
-            <h1>90<i class="fa fa-money home-icon" aria-hidden="true"></i></h1>
+            <h2>90<i class="fa fa-money home-icon" aria-hidden="true"></i></h2>
             <p>Cent of every euro donated goes directly to project support and grants at home and abroad</p>
             <hr class="stat-divider d-md-none">
         </div>
         <div class="col-12 col-md stat-box">
-            <h1>&gt;10<i class="fa fa-thumbs-o-up home-icon" aria-hidden="true"></i></h1>
+            <h2>&gt;10<i class="fa fa-thumbs-o-up home-icon" aria-hidden="true"></i></h2>
             <p>projects worldwide to help people in need and give them a future</p>
             <hr class="stat-divider d-md-none">
         </div>
         <div class="col-12 col-md stat-box">
-            <h1>200<i class="fa fa-smile-o home-icon" aria-hidden="true"></i></h1>
+            <h2>200<i class="fa fa-smile-o home-icon" aria-hidden="true"></i></h2>
             <p>Thousand people are supported with your donation</p>
         </div>
     </div>
 </section>
 
-<section class="container-fluid end-container">
+<div class="container-fluid end-container">
     <div class="row">
         <a href="{% url 'about_us' %}" class="btn btn-warning home-btn" role="button"><i class="fa fa-info-circle btn-icon" aria-hidden="true"></i>What We Do</a>
     </div>
-</section>
+</div>
 
 <button onclick="topFunction()" id="myBtn" class="btn btn-warning" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
 {% endblock %}

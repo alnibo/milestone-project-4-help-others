@@ -23,11 +23,11 @@
 				<form method="post" action="{% url 'add_to_cart' project.id %}">
 					{% csrf_token %}
 					<div class="input-group">
-						<label for="exampleInputAmount" class="sr-only">Add Amount in Euro</label>
+						<label for="{{project.pk}}" class="sr-only">Add Amount in Euro</label>
 						<div class="input-group-prepend">
 							<span class="input-group-text">€</span>
 						</div>
-						<input name="amount" type="number" min="5" max="99999" class="form-control" placeholder="Enter Amount">
+						<input id="{{project.pk}}" name="amount" type="number" min="5" max="99999" class="form-control" placeholder="Enter Amount">
 						<div class="input-group-append">
 							<button class="btn btn-secondary" type="submit" data-toggle="modal" data-target="#shoppingModal"><i class="fa fa-plus-circle btn-icon" aria-hidden="true"></i>Add</button>
 						</div>

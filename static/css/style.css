@@ -359,6 +359,10 @@ input {
     width: 99%;
 }
 
+.cart-input {
+    min-width: 70px;
+}
+
 .checkout-box {
     border: 1px solid rgba(168, 168, 168, 1);
     border-radius: 3px;
@@ -395,7 +399,7 @@ input {
     overflow: hidden;
     border: solid 2px;
     width: 85%;
-    padding: 20px 30px 10px;
+    padding: 20px 15px 10px;
     margin: 20px auto 0;
 }
 

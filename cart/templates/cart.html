@@ -27,12 +27,12 @@
                             <form class="form-inline cart-form" method="POST" action="{% url 'adjust_cart' item.id %}">
                                 {% csrf_token %}
                                 <div>
-                                    <label for="exampleInputAmount" class="sr-only">New Amount in Euro</label>
+                                    <label for="{{ item.id }}" class="sr-only">New Amount in Euro</label>
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text" id="basic-addon1">€</span>
                                         </div>
-                                        <input name="amount" type="number" min="0" max="99999" class="form-control" value="{{ item.amount }}">
+                                        <input id="{{ item.id }}" name="amount" type="number" min="0" max="99999" class="form-control cart-input" value="{{ item.amount }}">
                                         <div class="input-group-append">
                                             <button type="submit" class="btn btn-secondary"><i class="fa fa-pencil-square-o btn-icon" aria-hidden="true"></i>Amend</button>
                                         </div>
