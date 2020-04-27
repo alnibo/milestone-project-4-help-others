@@ -4,15 +4,26 @@
 
 Stream Four Project - Full Stack Frameworks with Django Milestone - Code Institute
 
+![Image of Help Others Homepage](https://github.com/alnibo/milestone-project-4-help-others/blob/master/Other/help-others.jpg)
+
 This website connects private donors with foundations, initiatives and nonprofits in many countries all over the world. We help nonprofits access funding and support by sharing their projects with our community. There are many projects in over 8 categories, to which users can donate to.
 
 ## Table of Contents
 
-## 1. Demo
+1. [Demo](#demo)
+2. [UX](#ux)
+3. [Database](#database)
+4. [Features](#features)
+5. [Technologies Used](#technologies-used)
+6. [Testing](#testing)
+7. [Deployment](#deployment)
+8. [Credits](#credits)
+
+## Demo
 
 Check out the deployed website [here](https://help-others.herokuapp.com/).
 
-## 2. UX
+## UX
 
 To create a sleek look and a homogeneous experience for the user I used the colors grey, white and black consistently throughout the project. For a little bit of color I styled certain buttons in orange and the delete/remove buttons in red.
 
@@ -60,11 +71,16 @@ As a user I expect/would like/need:
 
 ### Wireframes
 
-In the planing process using [Balsamiq](https://balsamiq.cloud/) [these wireframes]() were created in order to design the layout for this project for mobile, medium and desktop views.
+In the planing process using [Balsamiq](https://balsamiq.cloud/) [these wireframes](https://github.com/alnibo/milestone-project-4-help-others/tree/master/Other/Wireframes) were created in order to design the layout for this project for mobile, medium and desktop views.
 
-## 3. Database
-## 4. Features
+## Database
+
+
+
+## Features
+
 ### Existing Features
+
 #### Page Structure
 
 - **Navbar:** Using Bootstrap, the navbar is fixed at the top and collapses on medium and small devices. It is then accessible through a button that enables a dropdown menu. On the left side the navbar contains the website's name and the links to 'Home', 'Projects' and 'Categories', which opens a dropdown menu with the different project categories. These links on the left side are always visible. If the user is logged in the the right side of the navbar contains a personalized link to the user's profile page, 'Logout', 'Cart' and a number that will display the amount of projects that have already been added to the cart. If the user is not logged in, the right side of the navbar will only display 'Register' and 'Login' buttons.
@@ -83,7 +99,7 @@ In the planing process using [Balsamiq](https://balsamiq.cloud/) [these wirefram
 
 - **Order/Contact and Payment form:** these forms are used during the checkout and enable the user to input his/her personal contact information as well as credit card details in order to complete the donation.
 
-- **Search bars:**
+- **Search bars:** enables user to search for specific projects.
 
 #### Buttons
 
@@ -107,7 +123,7 @@ In the planing process using [Balsamiq](https://balsamiq.cloud/) [these wirefram
 
 - **Change password button:** enables the user to change the password.
 
-- **Back to top button:** enables the user to jump back to the top. This feature is escpecially helpful when many projects have been added. I added `scroll-behavior: smooth;` to ensure a smooth scrolling behavior.
+- **Back to top button:** enables the user to jump back to the top. This feature is escpecially helpful when many projects have been added. I added `scroll-behavior: smooth;` to ensure a smooth scrolling behavior, which however does not work in Internet Explorer and Safari.
 
 #### Other
 
@@ -117,7 +133,15 @@ In the planing process using [Balsamiq](https://balsamiq.cloud/) [these wirefram
 
 ### Features Left to Implement
 
-## 5. Technologies Used
+- **Thousand Separators for money amounts:** Initially I included `USE_THOUSAND_SEPARATOR = TRUE`because I wanted to have the Euro amount displayed with a thousand separator. However, this also added a thousand separator on the year (in Payment form and on the 'Donation History' page). This is why I concluded not to use it. I tried other solutions, but these changed the numbers into strings, which didn't work for me. Fixing this is something I would like to work on for the future.
+
+- **Reset Password:** As mentioned in the [testing section](#testing) the reset password feature doesn't seem to be working. I tried all kinds of solutions but none of them worked for me. This is also something that needs to be figured out in the future.
+
+- **Pagination:** Once more and more projects will be added in the future it would make sense to include a pagination feature.
+
+- **Search Bar:** I would also like the user to be able to not only search for a project's name but also enabling the user searching the project's descriptions.
+
+## Technologies Used
 
 1. HTML - this standard markup language was used for the structure and layout of this website
 
@@ -145,7 +169,7 @@ In the planing process using [Balsamiq](https://balsamiq.cloud/) [these wirefram
 
 13. [Balsamiq](https://balsamiq.cloud/) - this web-based mockup tool was used to visualize the layout and design of the website
 
-## 6. Testing
+## Testing
 
 ### Code Validation
 
@@ -153,9 +177,15 @@ In the planing process using [Balsamiq](https://balsamiq.cloud/) [these wirefram
 
 The [W3C CSS Validation Service](https://validator.w3.org/) was used to validate HTML code.
 
+The error "bad value `search` for attribute `type` on element `button`" was shown, so I removed it.
+
+Another error was shown that "the value of the `for` attribute of the `label` element must be the id of a non-hidden form control". So, for the project pages I added `{{ project.id }}` as the value of the `for`attribute of the `label`element and as the `id` of the form control. For the cart page I added `{{ item.id }}` instead.
+
+No errors remained.
+
 #### CSS
 
-The [W3C Markup Validation Service](https://jigsaw.w3.org/css-validator/) was used to validate CSS code. Several errors and warnings were shown. But these were regarding Bootstrap and were disregarde.
+The [W3C Markup Validation Service](https://jigsaw.w3.org/css-validator/) was used to validate CSS code. Several errors and warnings were shown. But these were regarding Bootstrap and were disregarded.
 
 Otherwise no errors nor warnings were shown.
 
@@ -164,6 +194,10 @@ Otherwise no errors nor warnings were shown.
 [JSHint](https://jshint.com/) was used to validate JavaScript.
 
 The validator revealed that a `;` was missing in line 24 and that mybutton was undefined. Upon fixing that the validator was still showing that there is one undefined variable `$`. This warning was ignored as I think JSHint does not have access to external libraries, such as jQuery.
+
+Additionally it said that the function `topFunction` is unused. But I ignored this as JSHint doesn't have access to my `html` code, where the function `topFunction`is triggered with `onclick="topFunction()"`.
+
+No other errors were shown.
 
 #### Python
 
@@ -228,11 +262,13 @@ Throughout the development of this website all features were manually tested. Th
 | Checkout | Payment Form | - test if validation errors get displayed when when leaving a field blank | No bugs |
 | | Total Amount | - test if total amount is correctly displayed | No bugs |
 | | Submit Payment Button | - test if button submits payment, redirects to projects page and no items are left in cart | No bugs |
-| Password Reset | Resest password Button | - test if email is sent with link to reset password | Email is not sent due to having set up all the correct email settings, iussue remains |
+| Password Reset | Resest password Button | - test when entering email address if button redirects to reset passwort done and if email is sent | Initially when clicking the 'Reset password' button the site would loud for a long time and then display an error `Network is unreachable` <br> <br> After having been in contact with tutor support I tried following Google Account set up: <br> - turn off 2-Factor Authentication <br> - turn on Less Secure Apps <br> - turn on DisplayUnlockCaptcha <br> <br> As this didn't work I tried another solution: <br> - turn off Less Secure Apps <br> - turn on 2-Factor Authentication <br> - click on app passwords <br> - set up your new app password <br> - put it in env/config vars instead of the normal email password <br> even though the redirect to the password reset done page now works there is still no email sent |
+| 404 Error Page | All Projects Button | - test if button redirects to projects page | No bugs |
+| | Back to Homepage Button | - test if button redirects to index/home page | No bugs |
 
 ### Responsiveness testing
 
-Ensuring its responsiveness this website was tested across different mobile, tablet and desktop devices using Chrome developer tools. In a second step it was then tested across the most common internet browsers (Safari, Chrome, Internet Explorer, and Firefox), making sure it is compatible. For a detailed overview, please see this excel file [here]().
+Ensuring its responsiveness this website was tested across different mobile, tablet and desktop devices using Chrome developer tools. In a second step it was then tested across the most common internet browsers (Safari, Chrome, Internet Explorer, and Firefox), making sure it is compatible. For a detailed overview, please see this excel file [here](https://github.com/alnibo/milestone-project-4-help-others/blob/master/Other/Testing-resp-comp%20MS4.pdf).
 
 ### User stories testing
 
@@ -284,7 +320,7 @@ Ensuring its responsiveness this website was tested across different mobile, tab
 #### User story 16
 - After clicking the 'See donation history' button on the profile page, a user is able to see his/her donation history. All projects a user has donated to are displayed included the donated amount. On the bottom of the page to totally donated amount is shown.
 
-## 7. Deployment
+## Deployment
 
 ### GitHub
 
@@ -311,6 +347,15 @@ Following steps were taken to deploy my project:
     
     key | value 
     --- | ---
+    AWS_ACCESS_KEY_ID | <your_key>
+    AWS_SECRET_ACCESS_KEY_ID | <your_key>
+    DATABASE_URL | <your_ostgres_database_url>
+    DISABLE_COLLECTSTATIC | 1
+    EMAIL_ADDRESS | <your_email_address>
+    EMAIL_PASSWORD | <your_email_password>
+    SECRET_KEY | <your_secret_key>
+    STRIPE_PUBLISHABLE | <your_stripe_pk>
+    STRIPE_SECRET | <your_strip_sk>
 
 2. Login to the Heroku account in Gitpod
 
@@ -363,24 +408,24 @@ Following steps were taken to deploy my project:
 
 ### AWS
 
-These are the steps to configure the external server Amazon AWS S3:
+These are the steps were taken to configure the external server Amazon AWS S3:
 
-    - Create bucket granting it public access
-    - In properties we activate static website hosting
-    - Under permissions we add the following CORS Configuration:
+1. Creating bucket granting it public access
+2. In properties we activate static website hosting
+3. Under permissions we add the following CORS Configuration:
 
-        ```
-        <CORSConfiguration>
-            <CORSRule>
-                <AllowedOrigin>*</AllowedOrigin>
-                <AllowedMethod>GET</AllowedMethod>
-                <MaxAgeSeconds>3000</MaxAgeSeconds>
-                <AllowedHeader>Authorization</AllowedHeader>
-            </CORSRule>
-        </CORSConfiguration>
-        ```
+    ```
+    <CORSConfiguration>
+        <CORSRule>
+            <AllowedOrigin>*</AllowedOrigin>
+            <AllowedMethod>GET</AllowedMethod>
+            <MaxAgeSeconds>3000</MaxAgeSeconds>
+            <AllowedHeader>Authorization</AllowedHeader>
+        </CORSRule>
+    </CORSConfiguration>
+    ```
     
-    - And under Bucket Policy we add following code and insert the specific ARN into the ressource:
+4. And under Bucket Policy following code was added and the specific ARN was inserted into "Ressource":
 
     ```
     {
@@ -397,19 +442,19 @@ These are the steps to configure the external server Amazon AWS S3:
     }
     ```
 
-    - Go to IAM (Identity and Access Management where we can manage who can access our AMazon AWS services) and create a group
-    - Create a policy, where we choose S3 Full Access, in Resource add the specific ARN and add the ARN again with '/*' at the end
-    - Attach created policy to group
-    - Create a user, enable Programmatic access and give group permission
-    - Download csv file with access keys (it is important to download them and safe them as you'll never be able to generate them again)
-    - Install following packages, which allow us to connect Django to S3 and add 'storages to the app in settings.py
+5. Went to IAM (Identity and Access Management where we can manage who can access our AMazon AWS services) and created a group
+6. Created a policy, where we choose S3 Full Access, in Resource added the specific ARN and added the ARN again with '/*' at the end
+7. Attached created policy to group
+8. Createed a user, enable Programmatic access and gave group permission
+9. Downloaded csv file with access keys
+10. Installed following packages, which allow us to connect Django to S3 and add 'storages to the app in settings.py
 
     ```
     pip3 install django-storages
     pip3 install boto3
     ```
 
-    - Add the AWS S3 bucket details in the setting.py file:
+11. Added the AWS S3 bucket details in the setting.py file:
 
     ```
     AWS_S3_OBJECT_PARAMETERS = {
@@ -423,20 +468,24 @@ These are the steps to configure the external server Amazon AWS S3:
     AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
     ```
 
+12. Created a custom_storages.py file to set classes to route to the location for static and media files
+13. Finally, I pushed the static files to S3 by typing: `python3 manage.py collectstatic`
+
 
 ### Instructions on how to run this project locally
 
 1. Make sure you have an IDE and the following must be installed:
-  - [PIP](https://pip.pypa.io/en/stable/installing/#upgrading-pip) (will be already installed if you are using Python 3.4 or above)
-  - [Python 3](https://www.python.org/downloads/)
-  - [Git](https://www.atlassian.com/git/tutorials/install-git)
-  - [Django](https://www.djangoproject.com/)
+
+    - [PIP](https://pip.pypa.io/en/stable/installing/#upgrading-pip) (will be already installed if you are using Python 3.4 or above)
+    - [Python 3](https://www.python.org/downloads/)
+    - [Git](https://www.atlassian.com/git/tutorials/install-git)
+    - [Django](https://www.djangoproject.com/)
 
 2. Go to https://github.com/alnibo/milestone-project-4-help-others. There you can either download a copy of the repository by clicking on "Download ZIP" on the top right of the page or if you have Git installed you can clone the repository with the following command:
 
-```
-git clone https://github.com/alnibo/milestone-project-4-help-others.git
-```
+    ```
+    git clone https://github.com/alnibo/milestone-project-4-help-others.git
+    ```
 
 3. In your local IDE you need to create two files, one called `env.py` and the other one `.gitignore`
 
@@ -446,16 +495,44 @@ git clone https://github.com/alnibo/milestone-project-4-help-others.git
 
 6. Then run the following command and open port in preview or in a new browser tab:
 
-```
-python3 manage.py runserver
-```
+    ```
+    python3 manage.py runserver
+    ```
 
-## 8. Credits
+## Credits
 
 ### Content
+
+I found inspiration about donation categories from [this website](https://www.donasity.com/campaign/index/campaigncategorylist).
 
 ### Media
 
 The pictures were taken from the online image libraries [Pexels](https://www.pexels.com) and [Unsplash](https://unsplash.com).
 
 ### Acknowledgements
+
+The foundation of this project was the E-Commerce Mini Project from Code Institute. The initial code and concepts were taken from there and then extended and customized for this website.
+
+The code for the back to top button was taken from [here](https://www.w3schools.com/howto/howto_js_scroll_to_top.asp).
+
+To create the environment variables I followed [hese instructions](https://code-institute-room.slack.com/archives/CP07TN38Q/p1576743936008200) of Anna Greaves, a Tutor from Code Institute.
+
+The code for smooth scrolling was seen [here](https://www.w3schools.com/howto/howto_css_smooth_scroll.asp#section1).
+
+In order to display capital letters for a names from the database inside a django template I found [this stackoverflow example](https://stackoverflow.com/posts/14268364/edit).
+
+I used the code from [here](https://stackoverflow.com/questions/26798623/how-to-return-the-result-on-same-page-in-django) to stay on the same page in Django.
+
+In order to display something else when empty I used [this code](https://stackoverflow.com/questions/17435233/django-template-check-for-empty-query-set).
+
+To set up the error pages I got information from [here](https://stackoverflow.com/questions/17662928/django-creating-a-custom-500-404-error-page).
+
+In order to get the total sum of donations I used [this stackoverflow example](https://stackoverflow.com/questions/8616343/django-calculate-the-sum-of-the-column-values-through-query).
+
+To have active navbar links I found a solution form [here](https://stackoverflow.com/questions/25044370/make-clicked-tab-active-in-bootstrap).
+
+Last but not least, I would like to thank my mentor Aaron Sinnott for his help and everyone from tutur support and Student Care for their help and guidance throughout this project. 
+
+Also the biggest thank you goes out to my girlfriend who accepted and was ok with me sitting for long ours in front of the computer and supported me every step along the way.
+
+### This project was created for educational purposes only.
