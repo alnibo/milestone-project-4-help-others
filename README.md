@@ -219,7 +219,7 @@ I used `related_name=orders` and `related_name=items` to call the donation histo
 
 ### Features Left to Implement
 
-- **Thousand Separators for money amounts:** Initially I included `USE_THOUSAND_SEPARATOR = TRUE`because I wanted to have the Euro amount displayed with a thousand separator. However, this also added a thousand separator on the year (in Payment form and on the 'Donation History' page). This is why I concluded not to use it. I tried other solutions, but these changed the numbers into strings, which didn't work for me. Fixing this is something I would like to work on for the future.
+- **Thousand Separators for money amounts:** Initially I included `USE_THOUSAND_SEPARATOR = TRUE` because I wanted to have the Euro amount displayed with a thousand separator. However, this also added a thousand separator on the year (in Payment form and on the 'Donation History' page). This is why I concluded not to use it. I tried other solutions, but these changed the numbers into strings, which didn't work for me. Fixing this is something I would like to work on for the future.
 
 - **Reset Password:** As mentioned in the [testing section](#testing) the reset password feature doesn't seem to be working. I tried all kinds of solutions but none of them worked for me. This is also something that needs to be figured out in the future.
 
@@ -287,7 +287,7 @@ The [W3C CSS Validation Service](https://validator.w3.org/) was used to validate
 
 The error "bad value `search` for attribute `type` on element `button`" was shown, so I removed it.
 
-Another error was shown that "the value of the `for` attribute of the `label` element must be the id of a non-hidden form control". So, for the project pages I added `{{ project.id }}` as the value of the `for`attribute of the `label`element and as the `id` of the form control. For the cart page I added `{{ item.id }}` instead.
+Another error was shown that "the value of the `for` attribute of the `label` element must be the id of a non-hidden form control". So, for the project pages I added `{{ project.id }}` as the value of the `for` attribute of the `label` element and as the `id` of the form control. For the cart page I added `{{ item.id }}` instead.
 
 No errors remained.
 
@@ -308,6 +308,26 @@ Additionally it said that the function `topFunction` is unused. But I ignored th
 No other errors were shown.
 
 #### Python
+
+I checked my Python code on [PEP 8 online](http://pep8online.com/), where I found several whitespace and indention errors.
+
+Setting Django `DEBUG = True` enabling a real time debugging of code has helped figure out errors in the deployment phase. While developing, I ensured the code was successfully rendered in the web browser by running following command:  `python3 manage.py runserver`.
+
+In each app test files were created to test views, models and forms. By entering `python3 manage.py test` in the terminal all tests are run. To only run tests for a specific app type `python3 manage.py test <app_name>` into the terminal.
+
+##### Coverage
+
+In order to get reports on test code [Coverage](https://coverage.readthedocs.io/en/v4.5.x/) was run.
+
+To do this I followed the following steps:
+
+1. Installed coverage by typing `pip3 install coverage` in the terminal
+
+2. Then typed `coverage run --source=<app_name> manage.py test` to run the tests for each app.
+
+3. With `coverage report` I could look at my results
+
+4. By typing `coverage html` a new folder is created, whith an index file that contains information what part of you code is tested.
 
 All other functionalities were manually tested.
 
@@ -355,7 +375,7 @@ Throughout the development of this website all features were manually tested. Th
 | Edit Project | Form | - test if form is already displaying current information about the project in the form fields | Initially it was an empty form, this was solved by passing in an initial argument for each of the form fields in form of a dictionary like this `edit_project_form = AddProjectForm(initial={'name': project.name, 'category':project.category, ... })` |
 | | Category Dropdown Field | - test if dropdown selection menu works | No bugs |
 | | Choose file Button | - test if button opens a pop up window where an image can be selected to upload | No bugs |
-| | Confirm Changes Button | - test if button submits the edit form and correctly updates the project's information in the database | - Initially a when submitting the edit form instead of updating the current project a new project was added, by setting each field to data coming back from the form `project.name = edit_project_form.cleaned_data.get('name')` and saving it `project.save()` made it work so that it would update the existing project <br> - Another problem was that the if the user decides to keep the same image and doesn't select a new image he/she was prompted to select an image. This was solved by adding <br> `if edit_project_form.cleaned_data.get('image'): project.image = edit_project_form.cleaned_data.get('image')` |
+| | Confirm Changes Button | - test if button submits the edit form and correctly updates the project's information in the database | - Initially a when submitting the edit form instead of updating the current project a new project was added, by setting each field to data coming back from the form `project.name = edit_project_form. cleaned_data.get('name')` and saving it `project.save()` made it work so that it would update the existing project <br> - Another problem was that the if the user decides to keep the same image and doesn't select a new image he/she was prompted to select an image. This was solved by adding <br> `if edit_project_form. cleaned_data.get('image'): project.image = edit_project_form. cleaned_data.get('image')` |
 | | Edit Functionality | - test when manually adding the id of the project after the url ../projects/edit/ if possible to access the edit page | Initially this was possible, but solved adding this if statement `if not user == project.added_by:`, telling the user that he/she doesn't have permission to edit this project and redirecting him/her back to the project details page |
 | | Cancel Button | - test if button redirects back to the correct project details page and doesn't update the project's information | No bugs |
 | Donation History | Total Amount | - check if total amount is correct | Initially total amount was summing up all donations from every user of the database, this was solved by adding `filter(order__user=request.user)` to only include projects that were added by the current user |
