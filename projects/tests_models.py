@@ -11,3 +11,11 @@ class ProjectTest(TestCase):
     def test_str(self):
         project = Project(name='Test Project')
         self.assertEqual(str(project), 'Test Project')
+    
+    def test_add_project(self):
+        project = Project(name='Test', category='Test Cat',
+                          description='Test Desc')
+        project.save()
+        self.assertEqual(project.name, "Test")
+        self.assertEqual(project.category, "Test Cat")
+        self.assertEqual(project.description, "Test Desc")
