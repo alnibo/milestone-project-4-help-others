@@ -3,13 +3,16 @@
 {% block head_title %}{{ user|title }}'s Donations{% endblock %}
 
 {% block content %}
+<!-- Top picture with header -->
 <header class="container-fluid top-container">
 	<div class="row top-pic" title="group of kids"></div>
 	<h2 class="col-12 top-header">{{ user|title }}'s Donations</h2>
 </header>
 
+<!-- Project panels -->
 <section class="container section-container">
 	<div class="row panel-row">
+        <!-- If user has already ordered show project panels -->
         {% if user.orders.all|length > 0 %}
             {% for order in user.orders.all %}
                 {% for item in order.items.all %}
@@ -26,6 +29,8 @@
                 </div>
                 {% endfor %}
             {% endfor %}
+
+        <!-- If user has not ordered anything yet -->
         {% else %}
             <div class="cart-text">
                 <p>You haven't donated anyhting yet. Look through our projects to find something that you would like to donate money to.</p>
@@ -37,6 +42,7 @@
         {% endif %}
 	</div>
 
+    <!-- If user has already ordered show total amount -->
     {% if user.orders.all|length > 0 %}
         <div class="row checkout-box col-md-8 col-lg-5">
             <div class="checkout-box-content text-center">
@@ -47,5 +53,6 @@
     {% endif %}
 </section>
 
+<!-- Back to top button -->
 <button onclick="topFunction()" id="myBtn" class="btn btn-warning" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
 {% endblock %}

@@ -4,6 +4,7 @@
 
 {% block head_title %}Checkout{% endblock %}
 
+<!-- Stripe js -->
 {% block head_js %}
 <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
 <script type="text/javascript">
@@ -15,11 +16,13 @@
 {% endblock %}
 
 {% block content %}
+<!-- Top picture with header -->
 <header class="container-fluid top-container">
     <div class="row top-pic" title="group of kids"></div>
     <h2 class="col-12 top-header">Checkout</h2>
 </header>
 
+<!-- Display all cart items that are to be donated to -->
 <section class="container-fluid section-container">
     <div class="row">
         {% for item in cart_items %}
@@ -36,33 +39,35 @@
         {% endfor %}
     </div>
 
+    <!-- Box that shows total amount to donate -->
     <div class="row checkout-box col-md-8 col-lg-5 text-center">
             <h5 class="col-12"><strong>Total</strong></h5>
             <h6 class="col-12"><strong>{{ total }}<i class="fa fa-eur" aria-hidden="true"></i></strong></h6>
     </div>
 
+    <!-- Contact and payment details forms for the user to fill out to complete payment -->
     <form class="row checkout-form" role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
-
         <div id="credit-card-errors" style="display: none;">
             <div class="alert-message block-message error" id="stripe-error-message"></div>
         </div>
-
+        <!-- Contact details form -->
         <div class="form-group col-md-6">
             <legend>Contact Details</legend>
             {{ order_form | as_bootstrap }}
         </div>
-
+        <!-- Payment details form -->
         <div class="form-group col-md-6">
             <legend>Payment Details</legend>
             {{ payment_form | as_bootstrap }}
         </div>
-
         {% csrf_token %}
+        <!-- Button to submit payment -->
         <div class="form-group col-md-12">
             <input class=" btn btn-warning col-12 col-md-4" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
         </div>
     </form>
 </section>
 
+<!-- Back to top button -->
 <button onclick="topFunction()" id="myBtn" class="btn btn-warning" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
 {% endblock %}

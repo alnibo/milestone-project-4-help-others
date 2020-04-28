@@ -3,13 +3,14 @@
 {% block head_title %}{{ project.name|title }} | Details{% endblock %}
 
 {% block content %}
+<!-- Top picture with header -->
 <header class="container-fluid top-container">
 	<div class="row top-pic" title="group of kids"></div>
 	<h2 class="col-12 top-header">{{ project.name|title }}</h2>
 </header>
 
+<!-- Show project details -->
 <section class="container-fluid details-container">
-
 	<div class="row panel-row">
 		<div class="col-xs-10 col-xs-offset-1 col-sm-6 col-sm-offset-0 col-md-4 display panel panel-default">
 			<div class="panel-body">
@@ -19,7 +20,7 @@
 				<h5><strong>{{ project.category }}</strong></h5>
 				<p class="project-description">{{ project.description }}</p>
                 <p class="project-added">This project was added by {{ project.added_by|title }}</p>
-
+                <!-- Form to add project to cart -->
 				<form method="post" action="{% url 'add_to_cart' project.id %}">
 					{% csrf_token %}
 					<div class="input-group">
@@ -34,6 +35,7 @@
 					</div>
 				</form>
 				
+                <!-- If user has added this project, show Edit and Delete buttons -->
                 {% if user.is_authenticated and user == project.added_by %}
                 <div class="text-center">
                     <a href="{% url 'edit_project' project.pk %}" class="btn btn-light read-btn"><i class="fa fa-pencil-square-o btn-icon" aria-hidden="true"></i>Edit</a>
@@ -45,6 +47,7 @@
 	</div>
 </section>
 
+<!-- Delete modal that pops up when user clicks the delete button -->
 <div class="modal" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -64,5 +67,4 @@
         </div>
     </div>
 </div>
-
 {% endblock %}

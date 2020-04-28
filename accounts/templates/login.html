@@ -4,12 +4,13 @@
 
 {% block head_title %}User Login{% endblock %}
 {% block content %}
+<!-- Top picture -->
 <header class="container-fluid top-container">
     <div class="row top-pic" title="group of kids"></div>
 </header>
 
+<!-- Login form -->
 <section class="container section-container">
-
 	<div class="general-card col-md-8 col-lg-5">
 		<h2 class="form-text">Login</h2>
 		<div class="card-body">
@@ -21,10 +22,9 @@
 					<button type="submit" class="btn btn-secondary">Login</button>
 				</div>
 			</form>
+            <!-- Link to register -->
 			<p class="form-text">New here? <a href="{% url 'register' %}">Register now</a></p>
 		</div>
 	</div>
-
 </section>
-
 {% endblock %}a

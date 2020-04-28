@@ -3,16 +3,18 @@
 {% block head_title %}Home{% endblock %}
 
 {% block content %}
-
+<!-- Top picture -->
 <header class="container-fluid">
     <div class="row top-pic-home" title="Help Others"></div>
 </header>
 
+<!-- Welcome heading and sub heading -->
 <div class="col-12 welcome-heading">
     <h1 class="home-heading">Welcome to Help Others</h1>
     <h3 class="sub-heading-home">We can do great things with your donation. Find your favorite projects to help other people in need.</h3>
 </div>
 
+<!-- Search bar -->
 <section class="container section-container">
     <div class="row">
         <div class="col-sm-12 col-md-8 offset-md-2">
@@ -24,6 +26,7 @@
     </div>
 </section>
 
+<!-- Information statistics about Help Others -->
 <section class="container-fluid section-container stats-container">
     <div class="row text-center">
         <div class="col-12 col-md stat-box">
@@ -43,11 +46,13 @@
     </div>
 </section>
 
+<!-- Button to redirect to What We Do page -->
 <div class="container-fluid end-container">
     <div class="row">
         <a href="{% url 'about_us' %}" class="btn btn-warning home-btn" role="button"><i class="fa fa-info-circle btn-icon" aria-hidden="true"></i>What We Do</a>
     </div>
 </div>
 
+<!-- Back to top button -->
 <button onclick="topFunction()" id="myBtn" class="btn btn-warning" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
 {% endblock %}

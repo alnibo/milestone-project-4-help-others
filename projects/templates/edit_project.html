@@ -4,12 +4,13 @@
 
 {% block head_title %}{{ project.name|title }} | Edit {% endblock %}
 {% block content %}
+<!-- Top picture -->
 <header class="container-fluid top-container">
     <div class="row top-pic" title="group of kids"></div>
 </header>
 
+<!-- Edit project form -->
 <section class="container-fluid section-container">
-
 	<div class="general-card col-md-8 col-lg-5">
 		<h2 class="form-text">Edit {{ project.name|title }}</h2>
 		<div class="card-body">
@@ -23,7 +24,5 @@
 			</form>
 		</div>
 	</div>
-
 </section>
-
 {% endblock %}a

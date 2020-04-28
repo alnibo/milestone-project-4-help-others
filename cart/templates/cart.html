@@ -5,6 +5,7 @@
 {% block head_title %}Cart{% endblock %}
 
 {% block content %}
+<!-- Top picture with header -->
 <header class="container-fluid top-container">
     <div class="row top-pic" title="group of kids"></div>
     <h2 class="col-12 top-header">Your Cart</h2>
@@ -12,6 +13,7 @@
 
 <section class="container section-container">
     <div class="row">
+        <!-- If there are any projects in cart -->
         {% if project_count > 0 %}
             {% for item in cart_items %}
                 <div class="col-xs-10 col-xs-offset-0 col-sm-6 col-sm-offset-0 col-md-4 col-md-offset-0 display panel panel-default">
@@ -24,6 +26,7 @@
                         <h5><strong>{{ item.project.category }}</strong></h5>
                         <p class="project-description">{{ item.project.description }}</p>
                         <div class="row amend-row">
+                            <!-- Form to change the amount for each project -->
                             <form class="form-inline cart-form" method="POST" action="{% url 'adjust_cart' item.id %}">
                                 {% csrf_token %}
                                 <div>
@@ -39,11 +42,13 @@
                                     </div>
                                 </div>
                             </form>
+                            <!-- Button to remove project from cart -->
                             <a href="{% url 'remove_from_cart' item.id %}" class="btn btn-danger cart-btn"><i class="fa fa-trash" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
             {% endfor %}
+        <!-- If there aren't any projects in cart -->
         {% else %}
             <div class="cart-text">
                 <p>Your cart is currently empty. Look through our projects to find something that you would like to support.</p>
@@ -54,6 +59,7 @@
             </div>
         {% endif %}
     </div>
+    <!-- Box that shows total amount of cart and checkout button -->
     <div class="row checkout-box col-md-8 col-lg-5">
         <div class="checkout-box-content text-center">
             <h5><strong>Total</strong></h5>
@@ -65,5 +71,6 @@
     </div>
 </section>
 
+<!-- Back to top button -->
 <button onclick="topFunction()" id="myBtn" class="btn btn-warning" title="Go to top"><i class="fa fa-angle-up" aria-hidden="true"></i></button>
 {% endblock %}
