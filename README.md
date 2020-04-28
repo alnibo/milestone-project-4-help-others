@@ -109,7 +109,7 @@ In the planing process using [Balsamiq](https://balsamiq.cloud/) [these wirefram
 
 #### User Model
 
-The standard User model was used in this project, which is provided by `django.contrib.auth.models`.
+The standard User model was used in this project, which is provided by `django.contrib.auth.models`. With ForeignKey I created relationships between the User Model and the other models (see more below)
 
 #### Project Model
 
@@ -659,7 +659,7 @@ In order to get the total sum of donations I used [this stackoverflow example](h
 
 To have active navbar links I found a solution form [here](https://stackoverflow.com/questions/25044370/make-clicked-tab-active-in-bootstrap).
 
-Last but not least, I would like to thank my mentor Aaron Sinnott for his help and everyone from tutur support and Student Care for their help and guidance throughout this project. 
+Last but not least, I would like to thank my mentor Aaron Sinnott for his help and everyone from Tutur Support and Student Care for their help and guidance throughout this project. 
 
 Also the biggest thank you goes out to my girlfriend who accepted and was ok with me sitting long hours in front of the computer and who supported me every step along the way.
 
